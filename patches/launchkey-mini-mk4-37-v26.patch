@@ -56,14 +56,11 @@
  }
  
  all_assignments = {
-@@ -717,10 +738,28 @@
-   {control='Encoder 8', CSTrack=true, trackParam=CS_EQ1GAIN, paramOffset=6, paramName='@tp,@tn'},
+@@ -660,6 +681,34 @@
+   {control='Encoder Custom 4', setMode=MODE.encoderOther, paramName='Encoder Other'},
+   {control='Legacy Encoder Custom 4', setMode=MODE.encoderOther, paramName='Encoder Other'},
  
-   {mode=MODE.encoderTransport},
--  {control='Encoder 1', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
--  {control='Encoder 2', globalObj=AGL_HORIZONTALZOOM},
--  {control='Encoder 3', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
--  {control='Encoder 4', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
++  {mode=MODE.encoderTransport},
 +  -- Verified numeric Logic key-command IDs (rather than unsupported label strings).
 +  {control='Playhead Forward Step', keyCmd=2595}, -- Forward by Nudge Value
 +  {control='Playhead Rewind Step', keyCmd=2594}, -- Rewind by Nudge Value
@@ -86,16 +83,38 @@
 +  {control='Encoder 4', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
 +  {control='Encoder 5', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
 +  {control='Encoder 7', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
-   -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
-   {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
-   {control='Next Marker', keyCmd='next marker'},
++  -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
++  {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
++  {control='Next Marker', keyCmd='next marker'},
++  {control='Previous Marker', keyCmd='prev marker'},
++  
+   {mode=MODE.plugin1},
+   {control='Encoder Page Down', setMode=MODE.plugin2},
+   {control='Encoder 1', CSTrack=true, trackParam=CS_SMARTCONTROL1, paramOffset=0, paramName='@tp,@tn'},
+@@ -716,16 +765,6 @@
+   {control='Encoder 7', CSTrack=true, trackParam=CS_EQ1FREQ, paramOffset=6, paramName='@tp,@tn'},
+   {control='Encoder 8', CSTrack=true, trackParam=CS_EQ1GAIN, paramOffset=6, paramName='@tp,@tn'},
+ 
+-  {mode=MODE.encoderTransport},
+-  {control='Encoder 1', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
+-  {control='Encoder 2', globalObj=AGL_HORIZONTALZOOM},
+-  {control='Encoder 3', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
+-  {control='Encoder 4', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
+-  -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
+-  {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
+-  {control='Next Marker', keyCmd='next marker'},
+-  {control='Previous Marker', keyCmd='prev marker'},
+-  
+   {mode=MODE.encoderOther},
+ 
+   -- Encoder modes must be last in this table since the sends are appended via the getSendsAssignments method
 @@ -758,7 +797,30 @@
  delayedDisplay = nil
  delayedMidi = nil
  displayValueCache = {};
 -encoderMode = MODE.plugin1
 +encoderMode = MODE.encoderTransport
-+LK37_DEV_REVISION = 'V24_DIRECT_SCRUB_EXPLICIT_RELEASE_2026_11_20'
++LK37_DEV_REVISION = 'V26_TRANSPORT_FIRST_LOGIC13_ENCODER_ZONE_2026_11_20'
 +positionDisplay = ''
 +lk37StationaryResumeAt=nil
 +lk37PlayActive = nil

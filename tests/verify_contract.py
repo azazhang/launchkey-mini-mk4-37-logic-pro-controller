@@ -10,7 +10,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 BASELINES = {
-    "config.lua": "30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d",
+    "config.lua": "383f77167304739f18363652dcbe2fedbb276886e7e37d70f80c0d0b20725faf",
+    "history/CandidateV24/config.lua": "30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d",
     "recovery-v22.lua": "3bfb17200963a23a67df5dc021fcf8cd36e73124e3dbfa6a2032bff426a2f35d",
     "history/StableV19/config.lua": "6c697838aa761d263ce25e5d548118af56be2b203a852003578c1f64b28a1fe0",
     "history/StableV18/config.lua": "0bd4564870b4a0e4fcb7146e73be424195b1571e9713d64d1abc990947334a88",
@@ -44,6 +45,13 @@ for pattern,desc in [
 ]:
     if pattern not in s:
         errors.append("Missing expected code anchor: " + desc)
+# The host must initialize its Encoder zone in Transport. The Lua cache and
+# hardware mode alone do not select the corresponding Logic assignment mode.
+encoderZone = s.split("{zone='Encoder'}",1)[1].split("-- Encoder modes must be last",1)[0]
+encoderModes = re.findall(r"\{mode=(MODE\.[A-Za-z0-9_]+)\}",encoderZone)
+if not encoderModes or encoderModes[0] != "MODE.encoderTransport":
+    errors.append("Host default Encoder mode must be Transport and declared first")
+
 controls = s.split("controls = {",1)[1].split("all_assignments = {",1)[0]
 ids = {int(i) for i in re.findall(r"\[(\d+)\]\s*=\s*\{name=",controls)}
 if ids != set(range(134)):
@@ -70,6 +78,6 @@ if errors:
     print("FAIL")
     print("\n".join(errors))
     sys.exit(1)
-print("PASS: 5 exact baseline checksums; 8 encoder labels; default Transport and display anchors;")
+print("PASS: 6 exact baseline checksums; 8 encoder labels; host-first Transport mode; default and display anchors;")
 print(f"      134 contiguous controller indices; {manifest_files} archived files validated.")
-print("NOTE: No audio-scrubbing, Logic runtime, or Logic 13 compatibility test was performed.")
+print("NOTE: Static checks cannot establish audio-scrub behavior or live Logic runtime compatibility.")

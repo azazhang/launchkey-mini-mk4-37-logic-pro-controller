@@ -2,9 +2,9 @@
 
 ## Intended hardware and software
 
-The script is specifically for the **Launchkey Mini MK4 37-key** (not the full-size Launchkey MK4 37 or the Mini MK4 25). It assumes Novation's official Logic controller script is installed. Our physical tests used Logic Pro Creator Studio 12.3.1. On Logic Pro 13.0, Lua registration was recovered by enabling the controller's Auto setting; physical control and audio behavior on Logic 13 is not yet verified.
+The script is specifically for the **Launchkey Mini MK4 37-key** (not the full-size Launchkey MK4 37 or the Mini MK4 25). It assumes Novation's official Logic controller script is installed. Our physical tests used Logic Pro Creator Studio 12.3.1. On Logic Pro 13.0, Lua registration was recovered by enabling the controller's Auto setting. V26 was verified to select Transport as the host Encoder mode after re-registration, and a simulated Encoder 1 message moved the playhead. Physical controls and audible scrubbing on Logic 13 still require user testing.
 
-**Important limitation:** Encoder 2 audible scrubbing is broken. The latest trial found direction-dependent movement (counterclockwise was close to the intended behavior, clockwise was abnormal), and releasing the encoder does not always exit scrub mode. Use an expendable test session and avoid V24 if you need dependable audible scrubbing.
+**Important limitation:** Encoder 2 audible scrubbing is broken. The latest trial found direction-dependent movement (counterclockwise was close to the intended behavior, clockwise was abnormal), and releasing the encoder does not always exit scrub mode. Use an expendable test session and avoid V26 if you need dependable audible scrubbing.
 
 ## Current Transport encoder layout
 
@@ -27,19 +27,19 @@ The source shipped with our development installation had SHA-256:
 
     4ec565815460156f348301e774576cecd975fa25d521d6e8f25185635faeb3b7
 
-The experimental V24 script has SHA-256:
+The experimental V26 script has SHA-256:
 
-    30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d
+    383f77167304739f18363652dcbe2fedbb276886e7e37d70f80c0d0b20725faf
 
-See patches/launchkey-mini-mk4-37-v24.patch to review the changes. Applying the patch to exactly the source above was independently checked to produce V24 byte-for-byte. If you have a different vendor-script revision, review the patch and adapt only appropriate portions; do not force it onto an incompatible base.
+See patches/launchkey-mini-mk4-37-v26.patch to review the changes. Applying the patch to exactly the source above was independently checked to produce V26 byte-for-byte. If you have a different vendor-script revision, review the patch and adapt only appropriate portions; do not force it onto an incompatible base.
 
 ## Logic Pro 13: controller script is installed but controls do not work
 
 After upgrading from Logic 12.3.1 to 13.0 on the development Mac, the custom Lua file and hardware MIDI endpoints remained intact, but Logic's controller database was missing the script-created mappings. The Launchkey Mini MK4 37 was listed in **Logic Pro > Settings > Control Surfaces > MIDI Controllers**, with its **Auto** checkbox turned **off**.
 
-**Fix:** with the Launchkey connected, enable **Auto** for the Launchkey Mini MK4 37 row (and leave unrelated controller rows unchanged). Logic immediately repopulated the script-created entries, including Encoder 1 and the clock-feedback controls; the installed V24 Lua source was unchanged.
+**Fix:** with the Launchkey connected, enable **Auto** for the Launchkey Mini MK4 37 row (and leave unrelated controller rows unchanged). Logic immediately repopulated the script-created entries, including Encoder 1 and the clock-feedback controls; the installed V24 Lua source was unchanged during this initial registration repair.
 
-The test confirms the registration mechanism in Logic 13.0. It does not establish that all controller functions or audible Encoder 2 scrubbing work correctly in Logic 13.0. Simply placing the script in the system MIDI Device Scripts folder or using Control Surface Setup > New > Install may not restore mappings while Auto is off.
+The initial test confirmed the registration mechanism in Logic 13.0. V26 addresses the additional default-mode mismatch: Logic originally selected Smart Controls even though the Launchkey showed Transport. Moving the existing Encoder Transport assignment block to the beginning of the Encoder zone made Logic select Transport immediately upon re-registration. A simulated physical Encoder 1 message then advanced the playhead, and its inverse returned it to the original position. This does not establish audible Encoder 2 scrubbing or behavior after a completely fresh Logic restart. Simply placing the script in the system MIDI Device Scripts folder or using Control Surface Setup > New > Install may not restore mappings while Auto is off.
 
 ## Logic preferences and Controller Assignments
 
@@ -52,7 +52,7 @@ The test confirms the registration mechanism in Logic 13.0. It does not establis
 - Scrub Forward: `B0 72 7F` (CC 114)
 - Scrub Rewind: `B0 73 7F` (CC 115)
 
-They were removed from the test Mac on November 20 after discovering they were unrelated to V24's current Encoder 2 route. The rewind binding conflicts with the Launchkey Play button (`B0 73 7F`). If you previously created these exact mappings, remove *only those manual CC rows* in **Logic Pro > Key Commands > Edit Assignments**, select the relevant scrub command, then choose its CC 114 or CC 115 Control Surface row and click **Delete Assignment**. Keep the script-created `Native Scrub Forward Step` and `Native Scrub Rewind Step` rows (if present). A new user who has never created these manual bindings has nothing to remove.
+They were removed from the test Mac on November 20 after discovering they were unrelated to V26's current Encoder 2 route. The rewind binding conflicts with the Launchkey Play button (`B0 73 7F`). If you previously created these exact mappings, remove *only those manual CC rows* in **Logic Pro > Key Commands > Edit Assignments**, select the relevant scrub command, then choose its CC 114 or CC 115 Control Surface row and click **Delete Assignment**. Keep the script-created `Native Scrub Forward Step` and `Native Scrub Rewind Step` rows (if present). A new user who has never created these manual bindings has nothing to remove.
 
 **Other recorded test-machine preferences:** `ScrubAudioInArrange = true`, `ScrubResponse = 4`, and `ScrubSpeed = 0`. They were already present in the November 7 diagnostic record and remain unchanged in the latest checks. Their necessity for the unresolved Encoder 2 audio-scrub implementation has *not* been established. Do not replace your Logic preferences or change those values merely to mirror the test machine; include your settings in an issue report if investigating audio scrubbing.
 

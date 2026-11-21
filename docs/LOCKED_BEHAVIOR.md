@@ -1,6 +1,6 @@
 # Frozen behavioral contract — do not regress
 
-Freeze date: November 20, 2026. Installed revision: V24_DIRECT_SCRUB_EXPLICIT_RELEASE_2026_11_20.
+Freeze date: November 20, 2026. Installed revision: V26_TRANSPORT_FIRST_LOGIC13_ENCODER_ZONE_2026_11_20. Historical V24 reference is retained.
 
 | Control / feature | Preservation requirement |
 |---|---|
@@ -12,7 +12,7 @@ Freeze date: November 20, 2026. Installed revision: V24_DIRECT_SCRUB_EXPLICIT_RE
 | Encoder 6 | Marker |
 | Encoder 7 | Not Used |
 | Encoder 8 | Tempo |
-| Default startup | Transport encoder mode, set in controller_initialize |
+| Default startup | Transport on hardware and in the Logic host Encoder assignment zone; mode declared first and selected at registration |
 | Stationary display | Transport bar:beat title stays current through playback, stopping, and playhead navigation |
 | Playback buttons | Play and Stop work normally; turning Encoder 2 must not unexpectedly toggle Play |
 
@@ -20,7 +20,8 @@ Implementation anchors: TRANSPORT_ENCODER_NAMES, encoderMode = MODE.encoderTrans
 
 ## Frozen checksums
 
-- Current installed V24: 30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d
+- Current installed V26: 383f77167304739f18363652dcbe2fedbb276886e7e37d70f80c0d0b20725faf
+- Historical V24: 30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d
 - V22 fallback: 3bfb17200963a23a67df5dc021fcf8cd36e73124e3dbfa6a2032bff426a2f35d
 - V19 historical: 6c697838aa761d263ce25e5d548118af56be2b203a852003578c1f64b28a1fe0
 - V18 historical: 0bd4564870b4a0e4fcb7146e73be424195b1571e9713d64d1abc990947334a88

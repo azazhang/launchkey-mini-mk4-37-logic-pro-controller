@@ -681,6 +681,34 @@ all_assignments = {
   {control='Encoder Custom 4', setMode=MODE.encoderOther, paramName='Encoder Other'},
   {control='Legacy Encoder Custom 4', setMode=MODE.encoderOther, paramName='Encoder Other'},
 
+  {mode=MODE.encoderTransport},
+  -- Verified numeric Logic key-command IDs (rather than unsupported label strings).
+  {control='Playhead Forward Step', keyCmd=2595}, -- Forward by Nudge Value
+  {control='Playhead Rewind Step', keyCmd=2594}, -- Rewind by Nudge Value
+  -- Logic Key Commands: 18 = Scrub Rewind; 19 = Scrub Forward.
+  -- Native scrubbing uses an edge-triggered command; no Lua release timer.
+  {control='Native Scrub Rewind Step', keyCmd=18},
+  {control='Native Scrub Forward Step', keyCmd=19},
+  -- Encoder 1's physical input continues to be redirected to the v1 key commands.
+  -- Its bound global is solely for read-only musical position feedback.
+  {control='Encoder 1', globalObj=AGL_BEATS, valueMode=kAssignRelative},
+  {control='Probe Clock Bar', globalObj=AGL_CLOCK, clockPart=ACP_BAR},
+  {control='Probe Clock Beat', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
+  {control='Probe Clock Format', globalObj=AGL_CLOCK, clockPart=ACP_FORMAT},
+  {control='Alt Scrub Beat', globalObj=AGL_SCRUB, clockPart=ACP_BEAT, valueMode=kAssignRelative},
+  {control='Alt Scrub Format', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative},
+  {control='Alt Shuttle', globalObj=AGL_SHUTTLE, valueMode=kAssignRelative},
+  {control='Alt Scrub Status', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
+  {control='Encoder 2', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative, localResolution=127},
+  {control='Encoder 3', globalObj=AGL_HORIZONTALZOOM},
+  {control='Encoder 4', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
+  {control='Encoder 5', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
+  {control='Encoder 7', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
+  -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
+  {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
+  {control='Next Marker', keyCmd='next marker'},
+  {control='Previous Marker', keyCmd='prev marker'},
+  
   {mode=MODE.plugin1},
   {control='Encoder Page Down', setMode=MODE.plugin2},
   {control='Encoder 1', CSTrack=true, trackParam=CS_SMARTCONTROL1, paramOffset=0, paramName='@tp,@tn'},
@@ -737,34 +765,6 @@ all_assignments = {
   {control='Encoder 7', CSTrack=true, trackParam=CS_EQ1FREQ, paramOffset=6, paramName='@tp,@tn'},
   {control='Encoder 8', CSTrack=true, trackParam=CS_EQ1GAIN, paramOffset=6, paramName='@tp,@tn'},
 
-  {mode=MODE.encoderTransport},
-  -- Verified numeric Logic key-command IDs (rather than unsupported label strings).
-  {control='Playhead Forward Step', keyCmd=2595}, -- Forward by Nudge Value
-  {control='Playhead Rewind Step', keyCmd=2594}, -- Rewind by Nudge Value
-  -- Logic Key Commands: 18 = Scrub Rewind; 19 = Scrub Forward.
-  -- Native scrubbing uses an edge-triggered command; no Lua release timer.
-  {control='Native Scrub Rewind Step', keyCmd=18},
-  {control='Native Scrub Forward Step', keyCmd=19},
-  -- Encoder 1's physical input continues to be redirected to the v1 key commands.
-  -- Its bound global is solely for read-only musical position feedback.
-  {control='Encoder 1', globalObj=AGL_BEATS, valueMode=kAssignRelative},
-  {control='Probe Clock Bar', globalObj=AGL_CLOCK, clockPart=ACP_BAR},
-  {control='Probe Clock Beat', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
-  {control='Probe Clock Format', globalObj=AGL_CLOCK, clockPart=ACP_FORMAT},
-  {control='Alt Scrub Beat', globalObj=AGL_SCRUB, clockPart=ACP_BEAT, valueMode=kAssignRelative},
-  {control='Alt Scrub Format', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative},
-  {control='Alt Shuttle', globalObj=AGL_SHUTTLE, valueMode=kAssignRelative},
-  {control='Alt Scrub Status', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
-  {control='Encoder 2', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative, localResolution=127},
-  {control='Encoder 3', globalObj=AGL_HORIZONTALZOOM},
-  {control='Encoder 4', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
-  {control='Encoder 5', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
-  {control='Encoder 7', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
-  -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
-  {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
-  {control='Next Marker', keyCmd='next marker'},
-  {control='Previous Marker', keyCmd='prev marker'},
-  
   {mode=MODE.encoderOther},
 
   -- Encoder modes must be last in this table since the sends are appended via the getSendsAssignments method
@@ -798,7 +798,7 @@ delayedDisplay = nil
 delayedMidi = nil
 displayValueCache = {};
 encoderMode = MODE.encoderTransport
-LK37_DEV_REVISION = 'V24_DIRECT_SCRUB_EXPLICIT_RELEASE_2026_11_20'
+LK37_DEV_REVISION = 'V26_TRANSPORT_FIRST_LOGIC13_ENCODER_ZONE_2026_11_20'
 positionDisplay = ''
 lk37StationaryResumeAt=nil
 lk37PlayActive = nil

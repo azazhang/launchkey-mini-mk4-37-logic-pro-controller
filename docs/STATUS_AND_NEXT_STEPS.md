@@ -22,13 +22,15 @@ Encoder 1's native nudge commands depend on the global Logic Nudge Value. For th
 
 ## Current known state
 
-V24 removes native key-command bursts, routes each Encoder 2 detent through AGL_SCRUB, and explicitly releases audio-scrub status when Encoder 1, Shift, Play or Stop is used. It also moves the dormant conflicting command controls to different CC numbers. V24 still has direction asymmetry: backward nearly correct, forward incorrect. Its scrub mode does not automatically exit solely when rotation stops.
+V26 preserves V24's native AGL_SCRUB / AGL_SCRUBSTATUS route, Encoder 1 behavior, and scrub-status release on Encoder 1, Shift, Play or Stop. Encoder 2 retains the unresolved direction asymmetry: backward nearly correct, forward incorrect; scrub mode does not automatically exit solely when rotation stops.
 
-## Next avenues — assess separately after the Logic 13 migration
+**Logic 13 default mode:** V24 set the Launchkey hardware and the Lua display cache to Transport but left the Logic host's Encoder assignment-zone default at the first registered mode, Smart Controls. Logic 13 consequently showed the Transport pad lit while Encoder movements followed another host mode. V25 attempted a first-event synchronization; its first injected Encoder 1 test left the host mode unchanged, so the candidate was rejected. V26 instead moves the existing Encoder Transport mode block to the first position in the Encoder zone, without changing any mappings. Upon per-device Auto re-registration in Logic 13.0, the host selected Encoder Transport immediately, and injected clockwise/counterclockwise Encoder 1 events moved and restored the playhead exactly.
+
+## Next avenues — assess separately on Logic 13
 
 1. Test the native AGL_SCRUB and AGL_SCRUBSTATUS modes directly, including host value semantics, two's-complement negative scaling, ACP_BEAT versus ACP_FORMAT, and audio audition in each direction.
 2. Investigate the Logic Key Command named Scrub by MIDI value (-2-). Characterize the exact MIDI value convention, gesture end/release, bidirectional audio, and integration without a permanent service.
 3. Investigate supported host-directed callbacks and feedback state transitions. Distinguish device-directed timer MIDI from internal Logic control-surface input.
-4. Compare real Logic 13 behavior while holding the preserved Encoder 1, startup Transport mode, encoder order, and stationary display constant.
+4. Obtain physical-device confirmation that Logic 13 starts with Transport behavior and the preserved display; then test audible Encoder 2 scrubbing separately.
 
 The passive trace cannot determine audible sound, DSP engine output, or OLED text. Real hardware and listening tests remain required before claiming scrubbing works.
