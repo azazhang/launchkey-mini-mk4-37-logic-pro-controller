@@ -22,7 +22,6 @@ See docs/LOCKED_BEHAVIOR.md for a preservation contract and docs/STATUS_AND_NEXT
 - recovery-v22.lua — the exact earlier V22 source (SHA-256 3bfb17200963a23a67df5dc021fcf8cd36e73124e3dbfa6a2032bff426a2f35d)
 - history — 84 text-source/history files: upstream reference, earlier versions V2–V24, install/restore scripts, Swift diagnostic source, and test logs
 - history/LK37_ENCODER2_FORENSIC_2026-11-20.md — the observed test results and root causes
-- docs/LOGIC13_MIGRATION.md — the backup and testing process for Logic 13
 - tests/verify_contract.py — static script and history integrity checks
 
 Earlier source folders labeled StableV* represent development milestones, not a guarantee that all functions were stable.
@@ -32,9 +31,9 @@ Earlier source folders labeled StableV* represent development milestones, not a 
 The live Lua controller file is installed at:
 /Library/Audio/MIDI Device Scripts/Focusrite - Novation/Launchkey Mini MK4 37.device/config.lua
 
-Save and quit Logic before changing this file. Back up the active script and the local control-surface database first, verify the expected source checksum, and reopen Logic after installing. Historical scripts are included for traceability and should be reviewed before execution.
+Save and quit Logic before changing this file. Preserve the prior script revision in Git, verify the expected checksum, and reopen Logic after installing. Historical install scripts are included for traceability and should be reviewed before execution.
 
-The public source archive excludes user Logic projects, audio, the binary controller-assignment databases, and the saved application bundle. They remain in a separate APFS-frozen Mac mini archive.
+This GitHub repository contains source code, historical versions, and diagnostic traces. Logic projects, audio, application files, and binary preferences remain at their original locations on the Mac mini. No additional application bundle or duplicate workspace archive is maintained.
 
 ## Copyright and support
 
