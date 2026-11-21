@@ -1,0 +1,808 @@
+--- a/config.lua
++++ b/config.lua
+@@ -64,12 +64,12 @@
+ }
+ 
+ TRANSPORT_ENCODER_NAMES = {
+-  [0x15] = 'Scrub',
+-  [0x16] = 'Zoom',
+-  [0x17] = 'Loop Start',
+-  [0x18] = 'Loop End',
+-  [0x19] = 'Marker',
+-  [0x1a] = 'Not Used',
++  [0x15] = 'Position',
++  [0x16] = 'Scrub',
++  [0x17] = 'Zoom',
++  [0x18] = 'Loop Start',
++  [0x19] = 'Loop End',
++  [0x1a] = 'Marker',
+   [0x1b] = 'Not Used',
+   [0x1c] = 'Tempo'
+ };
+@@ -267,7 +267,7 @@
+   [13] = {name='Encoder 4', controlID=13, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x58,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement}, -- kControlIDEncoder4
+   [14] = {name='Encoder 5', controlID=14, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x59,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement}, -- kControlIDEncoder5
+   [15] = {name='Encoder 6', controlID=15, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x5A,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement}, -- kControlIDEncoder6
+-  [16] = {name='Encoder 7', controlID=16, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x5B,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement}, -- kControlIDEncoder7
++  [16] = {name='Encoder 7', controlID=16, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x5B,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement, hasFeedback=true, hasFeedbackValueText=true}, -- kControlIDEncoder7
+   [17] = {name='Encoder 8', controlID=17, inport=DAW_OUT, outport=DAW_IN, midi={0xBF,0x5C,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement}, -- kControlIDEncoder8
+ 
+   [18] = {name='Pad 1', controlID=18, inport=DAW_OUT, outport=DAW_IN, midi={0x90,0x60,MIDI_LSB}, valueMode=kAssignRotate}, -- kControlIDPad1
+@@ -396,6 +396,27 @@
+ 
+   -- Legacy shift button
+   [121] = {name='Legacy Shift', controlID=121, inport=DAW_OUT, outport=DAW_IN, midi={0xB6,CC_SHIFT_LEGACY,MIDI_LSB}}, -- kControlIDShift
++  -- Encoder 1 transport navigation via key commands instead of direct clock edits.
++  [122] = {name='Playhead Forward Step', controlID=122, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x5D,MIDI_LSB}},
++  [123] = {name='Playhead Rewind Step', controlID=123, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x5E,MIDI_LSB}},
++  -- Reserved feedback-only controls; no physical MIDI on these CCs.
++  -- Keep this declaration stable in all future development revisions.
++  -- Fill the index-124 array gap: Lua array traversal otherwise stops before controls 125-133.
++  [124] = {name='Reserved MIDI Index 124', controlID=124, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x6E,MIDI_LSB}},
++  [125] = {name='Probe Clock Bar', controlID=125, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x62,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, hasFeedback=true, hasFeedbackValueText=true},
++  [126] = {name='Probe Clock Beat', controlID=126, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x63,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, hasFeedback=true, hasFeedbackValueText=true},
++  -- Dormant alternate scrub routes. Future Lua-only routing can select any
++  -- of these without changing the persisted controller_info() assignments.
++  [127] = {name='Alt Scrub Beat', controlID=127, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x64,MIDI_LSB}, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement},
++  [128] = {name='Alt Scrub Format', controlID=128, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x65,MIDI_LSB}, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement},
++  [129] = {name='Alt Shuttle', controlID=129, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x66,MIDI_LSB}, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement},
++  [130] = {name='Alt Scrub Status', controlID=130, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x67,MIDI_LSB}, midiType=Relative2C, valueMode=kAssignRelative, valueFormat=kAssign2sComplement},
++  [131] = {name='Probe Clock Format', controlID=131, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x68,MIDI_LSB}, fbType=FB_HOR_LTOR_BAR, hasFeedback=true, hasFeedbackValueText=true},
++  -- Dormant command controls (preserve indices).  0x6C/0x6D were already
++  -- used by the global Shift track-bank mode; use isolated CC 0x70/0x71.
++  -- Never emit the native command controls from Encoder 2.
++  [132] = {name='Native Scrub Rewind Step', controlID=132, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x70,MIDI_LSB}},
++  [133] = {name='Native Scrub Forward Step', controlID=133, inport=DAW_OUT, outport=DAW_IN, midi={0xB0,0x71,MIDI_LSB}},
+ }
+ 
+ all_assignments = {
+@@ -717,10 +738,28 @@
+   {control='Encoder 8', CSTrack=true, trackParam=CS_EQ1GAIN, paramOffset=6, paramName='@tp,@tn'},
+ 
+   {mode=MODE.encoderTransport},
+-  {control='Encoder 1', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
+-  {control='Encoder 2', globalObj=AGL_HORIZONTALZOOM},
+-  {control='Encoder 3', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
+-  {control='Encoder 4', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
++  -- Verified numeric Logic key-command IDs (rather than unsupported label strings).
++  {control='Playhead Forward Step', keyCmd=2595}, -- Forward by Nudge Value
++  {control='Playhead Rewind Step', keyCmd=2594}, -- Rewind by Nudge Value
++  -- Logic Key Commands: 18 = Scrub Rewind; 19 = Scrub Forward.
++  -- Native scrubbing uses an edge-triggered command; no Lua release timer.
++  {control='Native Scrub Rewind Step', keyCmd=18},
++  {control='Native Scrub Forward Step', keyCmd=19},
++  -- Encoder 1's physical input continues to be redirected to the v1 key commands.
++  -- Its bound global is solely for read-only musical position feedback.
++  {control='Encoder 1', globalObj=AGL_BEATS, valueMode=kAssignRelative},
++  {control='Probe Clock Bar', globalObj=AGL_CLOCK, clockPart=ACP_BAR},
++  {control='Probe Clock Beat', globalObj=AGL_CLOCK, clockPart=ACP_BEAT},
++  {control='Probe Clock Format', globalObj=AGL_CLOCK, clockPart=ACP_FORMAT},
++  {control='Alt Scrub Beat', globalObj=AGL_SCRUB, clockPart=ACP_BEAT, valueMode=kAssignRelative},
++  {control='Alt Scrub Format', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative},
++  {control='Alt Shuttle', globalObj=AGL_SHUTTLE, valueMode=kAssignRelative},
++  {control='Alt Scrub Status', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
++  {control='Encoder 2', globalObj=AGL_SCRUB, clockPart=ACP_FORMAT, valueMode=kAssignRelative, localResolution=127},
++  {control='Encoder 3', globalObj=AGL_HORIZONTALZOOM},
++  {control='Encoder 4', globalObj=AGL_LEFTLOCATOR, clockPart=ACP_BEAT},
++  {control='Encoder 5', globalObj=AGL_RIGHTLOCATOR, clockPart=ACP_BEAT},
++  {control='Encoder 7', globalObj=AGL_SCRUBSTATUS, valueMode=kAssignRelative},
+   -- Tempo control needs kAssignRotate to inc/dec in single units. Leaving it at kAssignRelative in/decs in 7BPM units.
+   {control='Encoder 8', globalObj=AGL_TEMPO, valueMode=kAssignRotate}, 
+   {control='Next Marker', keyCmd='next marker'},
+@@ -758,7 +797,30 @@
+ delayedDisplay = nil
+ delayedMidi = nil
+ displayValueCache = {};
+-encoderMode = MODE.plugin1
++encoderMode = MODE.encoderTransport
++LK37_DEV_REVISION = 'V24_DIRECT_SCRUB_EXPLICIT_RELEASE_2026_11_20'
++positionDisplay = ''
++lk37StationaryResumeAt=nil
++lk37PlayActive = nil
++lk37StopFeedbackEvents = 0
++-- Display focus is either 'position', 'popup', or nil (Transport).
++-- Its timer stage expires the overlay without changing controller assignments.
++displayFocus = nil
++displayTimerStage = nil
++displayDeadline = nil
++displayFallbackChecks = 0
++jogDisplayPending = false
++pendingPopupMidi = nil
++positionOverlayHoldBeats = 0
++feedbackBar = nil
++feedbackBeat = nil
++scrubStatusValue = nil
++lk37ScrubPending=false
++lk37ScrubLastInputAt=nil
++lk37ScrubIdleChecks=0
++lk37ScrubSessionCount=0
++zoomUserMovement = nil
++devCounter = {}
+ faderButtonMode = MODE.faderButtonArm
+ focussedTrackColor = nil
+ focussedTrackIndex = nil
+@@ -782,11 +844,12 @@
+ -- @return table controller info
+ -------------------------------------------------------------------------------
+ function controller_info()
++  print('LK37_V6 controller_info schema fixed', LK37_DEV_REVISION)
+ 	print("-------------------- Launchkey Mini MK4 37 controller_info --------------------")
+ 	return {
+ 		model = 'Launchkey Mini MK4 37',
+ 		manufacturer = 'Focusrite - Novation',
+-		version = 100,
++		version = 103,
+ 		copyright = [[Jan 29 2024
+ Copyright © 2004-2024 Focusrite Audio Engineering Ltd. All rights reserved]],
+ 
+@@ -801,13 +864,30 @@
+ -- @return table containing midi messages to initialise the device
+ -------------------------------------------------------------------------------
+ function controller_initialize(applicationName, deviceNewlyDetected)
++  print('LK37_V6_INIT', applicationName, deviceNewlyDetected)
+ 	print("-------------------- Launchkey Mini MK4 37 controller_initialize --------------------", applicationName, deviceNewlyDetected)
+   appName = applicationName
++  -- Every new Logic DAW session starts in Transport; the user can still
++  -- select Plugin/Mixer/Sends/Custom modes with the Shift+pad keys.
++  encoderMode = MODE.encoderTransport
++  displayFocus = nil
++  displayTimerStage = nil
++  displayDeadline = nil
++  lk37StationaryResumeAt=nil
++  scrubStatusValue=nil
++  lk37ScrubPending=false
++  lk37ScrubLastInputAt=nil
++  lk37ScrubIdleChecks=0
++  jogDisplayPending = false
+   local midi = {
+     -- DAW Mode
+     0x9f, 0x0c, 0x7f,
++    -- Novation hardware temporary screen timeout (2.0s). The device's
++    -- original nonvolatile setting was read as 0x63 via CoreMIDI and is
++    -- restored in controller_finalize when Logic closes normally.
++    0xb6, 0x71, 0x0a,
+     -- Set default modes for Pads, Faders and Encoders
+-    0xb6, CC_ENCODERMODE, 0x02, -- encoders = plugin
++    0xb6, CC_ENCODERMODE, 0x05, -- encoders = Transport
+     0xb6, CC_PADMODE, 0x02, -- pads = DAW
+     0xb6, CC_FADERMODE, 0x01, -- faders = volume
+     -- Set encoders to Relative mode
+@@ -825,8 +905,13 @@
+   -- Set the display configuration
+   midi = tableConcat(midi, getInitialDisplayConfigMidi())
+ 
+-  -- Set the stationary display to the app name
+-  midi = tableConcat(midi, getStationaryDisplayTextMidi(nil, appName, nil))
++  -- Initialize the Stationary Transport header/encoder labels immediately;
++  -- the host may not yet have published its clock feedback. We refresh it as
++  -- soon as Logic delivers the first real position, without guessing.
++  midi = tableConcat(midi, getStationaryDisplayGridMidi(
++    'Transport' .. (positionDisplay ~= '' and (' ' .. positionDisplay) or ''),
++    {'Pos', 'Scrub', 'Zoom', 'LPS', 'LPE', 'Mark', '-', 'BPM'}))
++  midi = tableConcat(midi, getEncoderTransportNamesMidi())
+ 
+   -- This is workaround of the bug where the first settriggertimer does not call controller_timer_trigger
+   -- Calling it here means all subsequent settriggertimer calls will work as expected
+@@ -847,6 +932,7 @@
+   return {
+     midi = {
+       0xb6, 0x54, 0x00, -- Release drumrack ownership
++      0xb6, 0x71, 0x63, -- Restore original keyboard display timeout
+       0x9f, 0x0c, 0x00 -- Exit DAW mode
+     },
+     outport = DAW_IN
+@@ -857,8 +943,117 @@
+ -- Called by the app to filter for every midi event. This function must be as fast as possible.
+ -- @return table containing midi messages to set the controller to the specified mode
+ -------------------------------------------------------------------------------
++-- Route automatic state changes through the *verified* Encoder 7 input
++-- binding, identical to the event produced by physically turning Encoder 7
++-- in V6. Its physical input remains unused in Transport mode.
++-- Only wall-clock timing can distinguish this timer from unrelated host timers.
++-- Novation's stationary display text requires bit 6 on the field index
++-- to MAKE the stationary display visible. V17 cleared that bit for every
++-- clock feedback, causing a blank or title-less Transport display.
++-- During a foreground Position/Zoom/Scrub popup, defer that trigger so
++-- it does not prematurely interrupt the temporary display.
++function lk37HoldStationary(seconds)
++  local now=lk37DisplayNow()
++  lk37StationaryResumeAt=now and (now+seconds) or nil
++end
++function lk37CanTriggerStationary()
++  if encoderMode~=MODE.encoderTransport then return false end
++  if lk37StationaryResumeAt~=nil then
++    local now=lk37DisplayNow()
++    if now==nil or now<lk37StationaryResumeAt then return false end
++    lk37StationaryResumeAt=nil
++  end
++  return true
++end
++
++function lk37DisplayNow()
++  if type(os)=='table' and type(os.time)=='function' then
++    local ok,t=pcall(os.time)
++    if ok and type(t)=='number' then return t end
++  end
++end
++-- Calibrate the forward startup ramp observed in live CoreMIDI+Logic LCD
++-- tests on 2026-11-07. Raw +1 initially moves less than -1; two boosted
++-- startup messages greatly narrow the initial lag. The original CC0x56
++-- host assignment and the reverse input path remain unchanged.
++lk37LastScrubSign=0
++lk37LastScrubTime=nil
++lk37ForwardBurstCount=0
++function lk37CalibrateScrubDelta(delta)
++  local now=lk37DisplayNow()
++  local sign=delta>0 and 1 or -1
++  if sign~=lk37LastScrubSign or
++    (now and lk37LastScrubTime and now-lk37LastScrubTime>=2) then
++    lk37ForwardBurstCount=0
++  end
++  lk37LastScrubSign=sign
++  lk37LastScrubTime=now
++  if sign>0 then
++    lk37ForwardBurstCount=lk37ForwardBurstCount+1
++    if delta==1 and lk37ForwardBurstCount<=2 then return 2 end
++  end
++  return delta
++end
++
++function lk37BeginDisplayFocus(focus,stage,seconds)
++  displayFocus=focus
++  displayTimerStage=stage
++  local now=lk37DisplayNow()
++  displayDeadline=now and now+seconds or nil
++  displayFallbackChecks=0
++end
++function lk37CancelDisplayTarget(addr)
++  if addr==0x15 then
++    local midi=getDisplayConfigMidi(0x15,0x00)
++    midi=tableConcat(midi,getDisplayConfigMidi(0x15,0x62))
++    midi=tableConcat(midi,getDisplayMidi(0x15,1,false,'Position'))
++    return tableConcat(midi,getDisplayMidi(0x15,2,false,positionDisplay))
++  end
++  if addr==0x21 then
++    local midi=getDisplayConfigMidi(0x21,0x00)
++    return tableConcat(midi,getDisplayConfigMidi(0x21,0x01))
++  end
++  return {}
++end
++
++function lk37SelectScrubStatus(target)
++  local output = {}
++  local current = scrubStatusValue
++  if type(current) ~= 'number' or current < 0 or current > 2 then
++    -- Relative status saturates at 0 after two downward steps.
++    output={0xBF,0x5B,0x7F, 0xBF,0x5B,0x7F}
++    current=0
++  end
++  while current < target do
++    output[#output+1]=0xBF; output[#output+1]=0x5B; output[#output+1]=0x01
++    current=current+1
++  end
++  while current > target do
++    output[#output+1]=0xBF; output[#output+1]=0x5B; output[#output+1]=0x7F
++    current=current-1
++  end
++  if #output>0 then print('LK37_V8_STATE_ROUTE',target,'prev',scrubStatusValue,'bytes',#output) end
++  scrubStatusValue=target
++  return output
++end
++
+ function controller_midi_in(midi, port)
+   if port == DAW_OUT then
++    if midi[0]==0xb0 and midi[1]==0x74 and midi[2]==0x7f then
++      devCounter.stopEvents=(devCounter.stopEvents or 0)+1
++      devCounter.postStopRemaining=16
++      -- On Stop, retire Encoder 1's temporary display focus. The next
++      -- confirmed musical-position callback then triggers the stationary
++      -- Transport display, even when bar:beat is unchanged.
++      displayFocus=nil
++      displayTimerStage=nil
++      displayDeadline=nil
++      displayFallbackChecks=0
++      pendingPopupMidi=nil
++      jogDisplayPending=false
++      print('LK37_V14_STOP_INPUT',devCounter.stopEvents,
++        'cachedPosition',positionDisplay,'displayFocus',displayFocus or 'transport')
++    end
+     -- make sure the echoed activation message doesn't mess up the chord display
+     if midi[0] == 0x9f and midi[1] == 0x0c then 
+       return {}
+@@ -873,6 +1068,14 @@
+       end
+ 
+       shift = midi[2] == 0x7f
++      if lk37ScrubPending and shift then
++        local out=lk37SelectScrubStatus(0)
++        lk37ScrubPending=false
++        lk37ScrubLastInputAt=nil
++        lk37ScrubIdleChecks=0
++        out[#out+1]=midi[0];out[#out+1]=midi[1];out[#out+1]=midi[2]
++        return {midi=out,inport=port}
++      end
+       if shift == true and encoderMode ~= MODE.plugin1 and encoderMode ~= MODE.plugin2 and encoderMode ~= MODE.eq and encoderMode ~= MODE.encoderTransport then
+         -- Fake an encoder rotation for each encoder to update the display
+         midi = tableConcat(midi, allEncodersZeroRotationMidi)
+@@ -887,7 +1090,7 @@
+         encoderMode = midi[2]
+         sendDelayedStationaryTextMidi(nil, appName, nil)
+       elseif midi[2] == 0x05 then
+-        sendDelayedStationaryGridMidi('Transport', {'Scrb', 'Zoom', 'LPS', 'LPE', 'Mark', '-', '-', 'BPM'})
++        sendDelayedStationaryGridMidi('Transport' .. (positionDisplay ~= '' and (' ' .. positionDisplay) or ''), {'Pos', 'Scrub', 'Zoom', 'LPS', 'LPE', 'Mark', '-', 'BPM'})
+       end
+     end
+   
+@@ -904,7 +1107,15 @@
+     -- Support shift-play and shift-record for minis
+     if IS_MINI == true and shift == true and midi[0] == 0xb0 then
+       if midi[1] == 0x73 then
+-        -- Map shift-play to stop
++        -- Shift+Play is Stop; release any audio-scrub session.
++        if lk37ScrubPending and midi[2]==0x7F then
++          lk37ScrubPending=false
++          lk37ScrubIdleChecks=0
++          lk37ScrubLastInputAt=nil
++          local out=lk37SelectScrubStatus(0)
++          out[#out+1]=0xB0; out[#out+1]=0x74; out[#out+1]=midi[2]
++          return {midi=out,inport=port}
++        end
+         return {midi = {0xb0, 0x74, midi[2]}, inport = port}
+       end
+       if midi[1] == 0x75 then
+@@ -913,8 +1124,99 @@
+       end
+     end
+ 
+-    -- Trigger next or previous marker events from encoder 5
+-    if shift == false and midi[0] == 0xbf and midi[1] == 0x59 and encoderMode == MODE.encoderTransport then
++    -- Convert Encoder 1 steps into directional transport key commands.
++    -- 0x40 means no movement; 0x41 clockwise; 0x3F counterclockwise.
++    if shift == false and encoderMode == MODE.encoderTransport and midi[0] == 0xbf and midi[1] == 0x55 then
++      local steps = midi[2] - 0x40
++      if steps == 0 then return {} end
++      -- Encoder 1 owns the visible Position screen for a bounded interval.
++      -- Other position updates keep the stationary Transport value cached.
++      if displayFocus=='popup' then
++        appendDelayedMidi(lk37CancelDisplayTarget(0x21))
++      end
++      local wasPosition=displayFocus=='position'
++      -- Let the Launchkey's native two-second temporary-display timeout
++      -- handle Position's foreground lifecycle. The host timer does not
++      -- reliably fire when playback is stopped; never gate future clock
++      -- updates on that timer. Trigger Position once per physical movement.
++      lk37HoldStationary(2)
++      displayFocus='position'
++      displayTimerStage=nil
++      displayDeadline=nil
++      displayFallbackChecks=0
++      pendingPopupMidi=nil
++      jogDisplayPending=true
++      devCounter.jog = (devCounter.jog or 0) + 1
++      if devCounter.jog <= 48 then
++        print('LK37_V10_JOG_INPUT', midi[2], steps, scrubStatusValue)
++      end
++      local cc = steps > 0 and 0x5D or 0x5E
++      local out = lk37SelectScrubStatus(0)
++      lk37ScrubPending=false
++      lk37ScrubLastInputAt=nil
++      lk37ScrubIdleChecks=0
++      -- Gradual, bounded acceleration using the V1 proven beat-step
++      -- key command. The former BF 55 relative AGL_BEATS branch jumped
++      -- multiple BARS even at raw delta=2.
++      local magnitude=math.abs(steps)
++      local beats=1
++      if magnitude>=8 then beats=4
++      elseif magnitude>=5 then beats=3
++      elseif magnitude>=3 then beats=2
++      end
++      if devCounter.jog <= 70 then
++        print('LK37_V15_BEAT_SCALE', steps, beats, 'playActive', tostring(lk37PlayActive))
++      end
++      for i = 1, beats do
++        out[#out+1] = 0xB0
++        out[#out+1] = cc
++        out[#out+1] = 0x7F
++        out[#out+1] = 0xB0
++        out[#out+1] = cc
++        out[#out+1] = 0x00
++      end
++      return {midi = out, inport = port}
++    end
++
++    -- Encoder 2: direct host audio-scrub control, one relative event per input.
++    -- Scrub Forward/Rewind key commands were stateful and could restart Play.
++    -- An audio-scrub session uses Logic's AGL_SCRUBSTATUS (1) and
++    -- AGL_SCRUB route.  The host controls audible scrub during motion.
++    -- Encoder 1, Shift, Play, and Stop explicitly exit audio-scrub state.
++    if not shift and encoderMode == MODE.encoderTransport and midi[0] == 0xBF and midi[1] == 0x56 then
++      local delta = midi[2] - 0x40
++      if delta == 0 then return {} end
++      devCounter.scrub = (devCounter.scrub or 0) + 1
++      if displayFocus == 'position' then appendDelayedMidi(lk37CancelDisplayTarget(0x15)) end
++      lk37HoldStationary(2)
++      lk37BeginDisplayFocus('popup','popup_send',2)
++      pendingPopupMidi = getTemporaryDisplayMidi('Scrub', delta > 0 and 'Forward' or 'Backward')
++      local isNewSession = not lk37ScrubPending
++      local out = lk37SelectScrubStatus(1)
++      lk37ScrubPending = true
++      lk37ScrubIdleChecks = 0
++      lk37ScrubLastInputAt = lk37DisplayNow()
++      local bounded = math.max(-2,math.min(2,delta))
++      out[#out+1]=0xBF
++      out[#out+1]=0x56
++      out[#out+1]=(bounded >= 0 and bounded or 0x80+bounded)
++      if devCounter.scrub<=80 then
++        print('LK37_V24_DIRECT_AUDIO_SCRUB', delta,bounded,'session',lk37ScrubSessionCount)
++      end
++      if isNewSession then
++        lk37ScrubSessionCount=lk37ScrubSessionCount+1
++        settriggertimer(100)
++      elseif devCounter.scrub % 8 == 0 then
++        -- Avoid thousands of host-timer resets during very fast rotation.
++        settriggertimer(250)
++      end
++      return {midi=out,inport=port}
++    end
++    -- Encoder 7 has no physical function. Keep its registered schema intact.
++    if not shift and encoderMode == MODE.encoderTransport and midi[0] == 0xBF and midi[1] == 0x5B then return {} end
++
++    -- Marker selection moved from hardware Encoder 5 to Encoder 6.
++    if shift == false and midi[0] == 0xbf and midi[1] == 0x5A and encoderMode == MODE.encoderTransport then
+       local diff = midi[2] - 0x40
+       markerDamperValue = markerDamperValue + diff
+       if markerDamperValue > markerDamperThreshold then
+@@ -928,13 +1230,36 @@
+       end
+     end
+ 
++    -- Zoom popup is generated from a *physical Encoder 3 turn only*.
++    -- Previously a host feedback update could repeatedly flash 'Zoom IN/OUT'.
++    if not shift and encoderMode == MODE.encoderTransport and
++       midi[0] == 0xbf and midi[1] == 0x57 and midi[2] ~= 0x40 then
++      if displayFocus=='position' then appendDelayedMidi(lk37CancelDisplayTarget(0x15)) end
++      lk37HoldStationary(2)
++      lk37BeginDisplayFocus('popup','popup_send',2)
++      local direction = midi[2] > 0x40 and 'IN' or 'OUT'
++      pendingPopupMidi = getTemporaryDisplayMidi('Zoom', direction)
++      settriggertimer(70)
++    end
++
++    -- Log a bounded number of physical scrub/mode events for development.
++    if encoderMode == MODE.encoderTransport and midi[0] == 0xbf and
++      (midi[1] == 0x56 or midi[1] == 0x5B) then
++      local key = midi[1] == 0x56 and 'scrub' or 'status'
++      devCounter[key] = (devCounter[key] or 0) + 1
++      if devCounter[key] <= 24 then
++        print('LK37_V6_HW', key, 'BO', midi[2], 'shift', shift)
++      end
++    end
++
+     -- Convert encoder values from binary offset to 2's complement
+     if midi[0] == 0xbf and midi[1] >= 0x55 and midi[1] <= 0x5c then
+       if encoderMode == MODE.encoderTransport then
+         -- Send the display midi appropriate for the changed transport encoder
+         local field = midi[1] - 0x40;
+-        if field == 0x15 or field == 0x17 or field == 0x18 then
+-          sendDelayedDisplayMidi(field, '', TRANSPORT_ENCODER_NAMES[field], '', false)
++        if field == 0x15 or field == 0x16 or field == 0x18 or field == 0x19 then
++          sendDelayedDisplayMidi(field, '', TRANSPORT_ENCODER_NAMES[field],
++             field == 0x15 and positionDisplay or '', false)
+         end        
+       end
+       local value2C = convertBOTo2C(midi[2])
+@@ -968,6 +1293,17 @@
+       end
+     end
+ 
++    -- Keep normal Play/Stop button semantics after any scrub gesture.
++    if lk37ScrubPending and midi[0]==0xB0 and
++      (midi[1]==0x73 or midi[1]==0x74) and midi[2]==0x7F then
++      lk37ScrubPending=false
++      lk37ScrubIdleChecks=0
++      lk37ScrubLastInputAt=nil
++      local out=lk37SelectScrubStatus(0)
++      out[#out+1]=midi[0]; out[#out+1]=midi[1]; out[#out+1]=midi[2]
++      return {midi=out,inport=port}
++    end
++
+     -- Pause display updates for the following events
+     if (midi[0] == 0xb0 and midi[1] >= 0x73 and midi[1] <= 0x75 and midi[2] == 0x7f) or -- Play, Stop, Record buttons down
+       (midi[0] == 0xb6 and (midi[1] == CC_SHIFT or midi[1] == CC_SHIFT_LEGACY) and midi[2] == 0x00) -- Shift button up (for mode changes)
+@@ -991,9 +1327,43 @@
+ -------------------------------------------------------------------------------
+ function controller_timer_trigger()
+   resumeDisplayTrigger()
+-  local midi = getDelayedDisplayMidi() or {}
+-  midi = tableConcat(midi, getDelayedMidi())
+-  return {midi = midi, outport = DAW_IN}
++  local midi=getDelayedDisplayMidi() or {}
++  midi=tableConcat(midi,getDelayedMidi())
++  if displayTimerStage=='popup_send' then
++    midi=tableConcat(midi,pendingPopupMidi)
++    pendingPopupMidi=nil
++    displayTimerStage='popup_hold'
++    settriggertimer(250)
++  elseif displayTimerStage=='popup_hold' or displayTimerStage=='position' then
++    local now=lk37DisplayNow()
++    displayFallbackChecks=displayFallbackChecks+1
++    local expired=(displayDeadline and now and now>=displayDeadline) or
++      (displayDeadline==nil and displayFallbackChecks>=(displayTimerStage=='popup_hold' and 5 or 24))
++    if not expired then
++      settriggertimer(250)
++    else
++      local oldFocus=displayFocus
++      displayFocus=nil; displayTimerStage=nil; displayDeadline=nil
++      displayFallbackChecks=0; jogDisplayPending=false
++      if encoderMode==MODE.encoderTransport then
++        -- The temporary screen's hardware timeout is authoritative.
++        -- Explicit cancellation is still useful for Zoom/Scrub overlays,
++        -- but the Stationary title must always reflect the newest host
++        -- value, including changes during the temporary screen.
++        if oldFocus=='popup' then
++          midi=tableConcat(midi,lk37CancelDisplayTarget(0x21))
++        end
++        local title='Transport'..(positionDisplay~='' and (' '..positionDisplay) or '')
++        midi=tableConcat(midi,getDisplayMidi(0x20,0,false,title))
++      end
++      print('LK37_V12_OVERLAY_CANCEL',oldFocus,positionDisplay)
++    end
++  end
++  -- Timer output is device-directed (DAW_IN).  Never append scrub-status
++  -- messages here: those would go to the hardware rather than Logic's
++  -- control assignments.  Explicit host-input releases occur on physical
++  -- Encoder 1, Shift, Play, and Stop messages in controller_midi_in.
++  return {midi=midi,outport=DAW_IN}
+ end
+ 
+ -------------------------------------------------------------------------------
+@@ -1001,6 +1371,13 @@
+ -- @return an integer containing the max length of the text in the subsequent CSFeedbackText call or a table containing midi to send feedback to the device
+ -------------------------------------------------------------------------------
+ function CSFeedback(controlID, currentValue, minValue, maxValue, nSubSequentControls, feedbackType, assignment)
++  if controlID == 10 or controlID == 16 or controlID == 125 or controlID == 126 or controlID == 131 then
++    local key = 'numeric_' .. tostring(controlID)
++    devCounter[key] = (devCounter[key] or 0) + 1
++    if devCounter[key] <= 20 then
++      print('LK37_V6_FB', controlID, currentValue, minValue, maxValue, feedbackType, encoderMode)
++    end
++  end
+   -- print("CSFeedback", controlID, currentValue, minValue, maxValue, nSubSequentControls, feedbackType, assignment)
+   local midi = {}
+   local ret = 0
+@@ -1012,6 +1389,9 @@
+     kControlIDEncoderPageUp,
+     kControlIDEncoderPageDown,
+     kControlIDEncoder1,
++    125, -- Probe Clock Bar
++    126, -- Probe Clock Beat
++    131, -- Probe Clock Format
+     kControlIDEncoder2,
+     kControlIDEncoder3,
+     kControlIDEncoder4,
+@@ -1066,6 +1446,35 @@
+     midi = tableConcat(midi, {0xb6, 0x45, 0x7f})
+   end
+ 
++  -- Host Play feedback also changes when playback is stopped from Logic's
++  -- GUI (the physical Stop CC hook cannot observe that action).
++  -- When Play drops to zero, immediately bring the latest cached musical
++  -- position back to the stationary display. A later final Clock text
++  -- callback will replace it with the exact final value.
++  if controlID==kControlIDPlay then
++    local nowPlaying=type(currentValue)=='number' and currentValue>0
++    local previous=lk37PlayActive
++    lk37PlayActive=nowPlaying
++    if previous~=nowPlaying then
++      lk37StopFeedbackEvents=lk37StopFeedbackEvents+1
++      if lk37StopFeedbackEvents<=60 then
++        print('LK37_V15_PLAY_FEEDBACK',previous,nowPlaying,
++          'lastBarBeat',positionDisplay,'focus',displayFocus or 'transport')
++      end
++    end
++    if previous==true and nowPlaying==false and
++       encoderMode==MODE.encoderTransport and displayFocus=='position' then
++      displayFocus=nil
++      displayTimerStage=nil
++      displayDeadline=nil
++      displayFallbackChecks=0
++      jogDisplayPending=false
++      local text='Transport'..(positionDisplay~='' and (' '..positionDisplay) or '')
++      midi=tableConcat(midi,getDisplayMidi(0x20,0,true,text))
++      print('LK37_V15_PLAY_STOP_DISPLAY_RESTORED',positionDisplay)
++    end
++  end
++
+   -- Transport and workflow button LEDs
+   if Set({kControlIDRecord, kControlIDPlay, kControlIDStop, kControlIDLoop, kControlIDCaptureMidi, kControlIDUndo, kControlIDQuantize, kControlIDClick}).includes(controlID)  then
+     local control = controls[controlID]
+@@ -1118,10 +1527,83 @@
+ -- Called by the app to process text feedback, only called when CSFeedback returns an integer
+ -- @return table containing midi to send feedback to the device
+ -------------------------------------------------------------------------------
++-- Only publish a clock position derived from actual Logic feedback.
++-- The bar:beat format is coalesced so tick-only changes never flood the OLED.
++function lk37UpdatePosition(text)
++  if type(text) ~= 'string' or text == '' then return nil end
++  local bar,beat = text:match('^%s*(%d+)%D+(%d+)')
++  if not bar or not beat then return nil end
++  local numberBar,numberBeat = tonumber(bar),tonumber(beat)
++  if not numberBar or not numberBeat then return nil end
++  local compact = tostring(numberBar) .. ':' .. tostring(numberBeat)
++  local changed = compact ~= positionDisplay
++  positionDisplay = compact
++  if encoderMode ~= MODE.encoderTransport then return nil end
++  local jogTrigger=(jogDisplayPending==true)
++  jogDisplayPending=false
++  if not changed and not jogTrigger then return nil end
++
++  -- Refresh both physical display buffers on EVERY Logic musical-position
++  -- change, irrespective of the script's stale temporary-overlay state.
++  -- In the Launchkey MK4 protocol, writing text WITHOUT trigger changes
++  -- the currently displayed contents (or its backing cache) in place.
++  -- The keyboard itself expires temporary displays after two seconds.
++  --
++  -- Re-triggering Position on every playback beat had repeatedly reset
++  -- the hardware's timeout, stranding the old Transport bar:beat.
++  -- Only a REAL physical Encoder 1 turn may trigger Position.
++  local header='Transport '..compact
++  local revealStationary=lk37CanTriggerStationary()
++  local midi=getDisplayMidi(0x20,0,revealStationary,header)
++  midi=tableConcat(midi,getDisplayMidi(0x15,2,jogTrigger,compact))
++
++  -- Once the physical turn has triggered Position, release Lua foreground
++  -- ownership. Future updates stay current but cannot hold the foreground.
++  -- Zoom/Scrub popups use their own independent hardware timer.
++  if jogTrigger then
++    displayFocus=nil
++    displayTimerStage=nil
++    displayDeadline=nil
++    displayFallbackChecks=0
++  end
++  devCounter.positionValue=(devCounter.positionValue or 0)+1
++  if devCounter.positionValue<=110 then
++    print('LK37_V18_STATIONARY_TITLE',compact,'reveal',revealStationary,
++      'jogTrigger',jogTrigger,'focus',displayFocus or 'transport')
++  end
++  return midi
++end
++
++function lk37FeedClockPiece(id, text)
++  if type(text)~='string' then return nil end
++  local n = tonumber(text:match('^%s*(%d+)%s*$'))
++  if n == nil then return nil end
++  if id == 125 then feedbackBar=n else feedbackBeat=n end
++  if feedbackBar and feedbackBeat then
++    return lk37UpdatePosition(tostring(feedbackBar) .. ':' .. tostring(feedbackBeat))
++  end
++end
++
+ function CSFeedbackText(controlID, pText, length)
+   -- print("CSFeedbackText", controlID, pText, length)
+   local midi = {}
+   local safeText = length > 0 and pText or ''
++  if controlID == 10 or controlID == 125 or controlID == 126 or controlID == 131 or controlID == 16 then
++    local key = 'text_' .. tostring(controlID)
++    devCounter[key] = (devCounter[key] or 0) + 1
++    if devCounter[key] <= 26 and (length > 0 or devCounter[key] <= 3) then
++      print('LK37_V6_TEXT',controlID,'len',length,'text',safeText,'mode',encoderMode)
++    end
++    if controlID==10 and (devCounter.postStopRemaining or 0)>0 then
++      print('LK37_V14_POST_STOP_FEEDBACK',safeText,'cached',positionDisplay)
++      devCounter.postStopRemaining=devCounter.postStopRemaining-1
++    end
++    if controlID == 10 and encoderMode == MODE.encoderTransport then
++      midi = tableConcat(midi, lk37UpdatePosition(safeText))
++    elseif controlID == 125 or controlID == 126 then
++      midi = tableConcat(midi, lk37FeedClockPiece(controlID,safeText))
++    end
++  end
+   
+   if controlID == kControlIDDrum then
+     setLiveLoopMode(false)
+@@ -1177,6 +1659,12 @@
+   -- Set the temporary display for encoder mode change
+   if (controlID == kControlIDEncoderPageUp or controlID == kControlIDEncoderPageDown or controlID == kControlIDTransport) and encoderMode ~= safeText then
+     cacheEncoderMode(safeText)
++    displayFocus = nil
++    displayTimerStage = nil
++    displayDeadline = nil
++    displayFallbackChecks = 0
++    jogDisplayPending = false
++    pendingPopupMidi = nil
+     midi = tableConcat(midi, getModeChangeMidi(safeText))
+     if controlID == kControlIDTransport and encoderMode == MODE.encoderTransport then
+       midi = tableConcat(midi, getEncoderTransportNamesMidi(controlID, 0))
+@@ -1227,7 +1715,9 @@
+ -------------------------------------------------------------------------------
+ function CSLongFeedbackText(controlID, pText, len)
+   -- print('CSLongFeedbackText', pText, len)
+-  
++  if controlID == 10 and encoderMode == MODE.encoderTransport and len > 0 then
++    return {midi=lk37UpdatePosition(pText) or {}, outport=DAW_IN}
++  end
+   if len > 0 then
+     -- Set the display value for the encoders
+     if controlID >= kControlIDEncoder1 and controlID <= kControlIDEncoder8 then
+@@ -1456,6 +1946,13 @@
+ -- @return table containing the sysex message
+ -------------------------------------------------------------------------------
+ function getDisplayMidi(address, field, trigger, text)
++  if address==0x20 then
++    devCounter.stationary=(devCounter.stationary or 0)+1
++    if devCounter.stationary<=60 or (devCounter.postStopRemaining or 0)>0 then
++      print('LK37_V14_STATIONARY',text,trigger,
++        'focus',displayFocus or 'transport','cached',positionDisplay)
++    end
++  end
+   if preventDisplayTrigger == true and address == 0x21 then
+     -- Do not send any global temporary display messages if preventDisplayTrigger is true
+     return nil
+@@ -1515,17 +2012,15 @@
+ function getEncoderTransportDisplayMidi(controlID, value)
+   local midi = {}
+   if shift == false then
+-    if controlID == kControlIDEncoder2 then
+-      if zoom ~= nil and value ~= zoom then
+-        midi = tableConcat(midi, getTemporaryDisplayMidi('Zoom', value > zoom and 'IN' or 'OUT'))
+-      else
+-        midi = tableConcat(midi, getTemporaryDisplayMidi('Zoom', 'IN/OUT'))
+-      end
+-      zoom = value
+-    elseif controlID == kControlIDEncoder8 then
+-      if value ~= nil then
+-        midi = tableConcat(midi, getTemporaryDisplayMidi('Tempo', value .. ' BPM'))
+-      end
++    -- Only changed user-initiated rotation can generate zoom notifications.
++    -- Do not send zoom overlays in CSFeedback.
++    if controlID == kControlIDEncoder7 and value ~= nil then
++      if scrubStatusValue ~= value then
++        scrubStatusValue = value
++        print('LK37_V8_SCRUBSTATUS',value)
++      end
++    elseif controlID == kControlIDEncoder8 and value ~= nil then
++      midi = tableConcat(midi,getTemporaryDisplayMidi('Tempo',value .. ' BPM'))
+     end
+   end
+   return midi
+@@ -1540,7 +2035,8 @@
+   for i=0x15,0x1c do
+     midi = tableConcat(midi, getDisplayMidi(i, 0, false, ''))
+     midi = tableConcat(midi, getDisplayMidi(i, 1, false, TRANSPORT_ENCODER_NAMES[i] or ''))
+-    midi = tableConcat(midi, getDisplayMidi(i, 2, false, ''))
++    midi = tableConcat(midi, getDisplayMidi(i, 2, false,
++      i == 0x15 and positionDisplay or ''))
+   end
+   return midi
+ end
+@@ -1718,9 +2214,15 @@
+   end
+   midi = tableConcat(midi, getDisplayMidi(address, 0, true, title))
+ 
+-  -- Turn off auto-trigger for Zoom, Marker & BPM encoders
++  -- V6 moved Zoom to Encoder 3 and Marker to Encoder 6.
++  -- Disable automatic temp popups for Scrub (2), Zoom (3), Marker (6),
++  -- and Tempo (8). Their own explicit overlays control the screen.
++  -- Keep Encoder 1's Position display auto-trigger ON.
++  midi = tableConcat(midi, makeSysex({0x04, 0x15, 0x62}))
+   midi = tableConcat(midi, makeSysex({0x04, 0x16, 0x22}))
+-  midi = tableConcat(midi, makeSysex({0x04, 0x19, 0x22}))
++  midi = tableConcat(midi, makeSysex({0x04, 0x17, 0x22}))
++  midi = tableConcat(midi, makeSysex({0x04, 0x19, 0x62}))
++  midi = tableConcat(midi, makeSysex({0x04, 0x1a, 0x22}))
+   midi = tableConcat(midi, makeSysex({0x04, 0x1c, 0x22}))
+ 
+   return midi
+@@ -1740,9 +2242,11 @@
+   midi = tableConcat(midi, getDisplayMidi(address, 1, false, middleLine))
+   midi = tableConcat(midi, getDisplayMidi(address, 2, true, bottomLine))
+ 
+-  -- Turn on auto-trigger for Zoom, Marker & BPM encoders
++  -- Restore normal hardware encoder auto-trigger when leaving Transport.
+   midi = tableConcat(midi, makeSysex({0x04, 0x16, 0x62}))
++  midi = tableConcat(midi, makeSysex({0x04, 0x17, 0x62}))
+   midi = tableConcat(midi, makeSysex({0x04, 0x19, 0x62}))
++  midi = tableConcat(midi, makeSysex({0x04, 0x1a, 0x62}))
+   midi = tableConcat(midi, makeSysex({0x04, 0x1c, 0x62}))
+   
+   return midi

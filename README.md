@@ -1,45 +1,44 @@
-# Launchkey Mini MK4 37 — Logic Pro controller customization
+# Launchkey Mini MK4 37 × Logic Pro — transport encoder improvements
 
-A documented series of custom Logic Pro Lua controller modifications for the Novation Launchkey Mini MK4 37-key keyboard. Work was done on Logic Pro Creator Studio 12.3.1 and macOS 27.2.1 and frozen on November 20, 2026, before testing Logic Pro 13.
+Community-facing, experimental modifications to the **Novation Launchkey Mini MK4 37-key** Logic Pro Lua control-surface script. The aim is to improve the transport encoders and OLED, and to find a reliable implementation of native audible scrubbing with other Launchkey users.
 
-## Current status
+**Status: partially working, work in progress (V24, November 20, 2026).** The navigation and transport-display improvements below worked on the development setup. **Encoder 2 audible scrubbing is still incorrect.** V24 is an experimental development snapshot and should not be treated as a stable release.
 
-The frozen version is V24 (root config.lua). Encoder 2 audible scrubbing is STILL UNRESOLVED. The most recent physical observation was that counterclockwise behavior was almost correct, whereas clockwise behavior remained incorrect.
+## What works and what does not
 
-Other features to preserve during future changes:
+| Feature | Current state |
+|---|---|
+| Encoder 1: Position | Working in observed tests: playhead movement and temporary Position display |
+| Default encoder mode | Working: Transport selected at controller initialization |
+| Stationary OLED | Working in observed tests: Transport bar:beat updates as Logic's playhead moves |
+| Encoder order | Preserved: Position, Scrub, Zoom, Loop Start, Loop End, Marker, Not Used, Tempo |
+| Encoder 2: Scrub | **Unresolved**: counterclockwise nearly correct; clockwise incorrect; scrub state may remain active |
+| Other models / Logic versions | Untested compatibility; this particular Lua script is for the 37-key Mini |
 
-- Encoder 1 playhead movement and temporary Position display.
-- Default Transport encoder mode after Logic initializes.
-- The encoder order: Position, Scrub, Zoom, Loop Start, Loop End, Marker, Not Used, Tempo.
-- Stationary Transport bar:beat display and its live updates.
-- Existing transport buttons, zoom, locator and marker behavior.
+Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini MK4 37. Logic Pro 13 compatibility has **not** been tested for this custom revision.
 
-See docs/LOCKED_BEHAVIOR.md for a preservation contract and docs/STATUS_AND_NEXT_STEPS.md for the forensic findings and research options.
+## Start here
 
-## Repository contents
+- **[How to try it and contribute](docs/TRY_AND_CONTRIBUTE.md)** — installation, restoration, feature mapping, known failures, useful bug reports.
+- **[Modification patch](patches/launchkey-mini-mk4-37-v24.patch)** — a unified diff against the exact original Novation script used for development; application verified byte-for-byte.
+- **[Experimental script V24](config.lua)** — current snapshot, including the still-broken Encoder 2 mapping.
+- **[Technical findings](docs/STATUS_AND_NEXT_STEPS.md)** — physical MIDI results, Logic scrub assignments, and alternative strategies.
+- **[Working-feature contract](docs/LOCKED_BEHAVIOR.md)** — behavior that an improved scrub implementation should preserve.
 
-- config.lua — exact current installed V24 Lua script (SHA-256 30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d)
-- recovery-v22.lua — the exact earlier V22 source (SHA-256 3bfb17200963a23a67df5dc021fcf8cd36e73124e3dbfa6a2032bff426a2f35d)
-- history — 84 text-source/history files: upstream reference, earlier versions V2–V24, install/restore scripts, Swift diagnostic source, and test logs
-- history/LK37_ENCODER2_FORENSIC_2026-11-20.md — the observed test results and root causes
-- tests/verify_contract.py — static script and history integrity checks
+If you want just the reliable improvements in a different vendor-script revision, review and adapt the patch sections relevant to Position, startup Transport mode, and the Transport display. Do not blindly transplant the V24 scrub section.
 
-Earlier source folders labeled StableV* represent development milestones, not a guarantee that all functions were stable.
+## Help solve Encoder 2 scrubbing
 
-## Deployment safety
+A physical capture recorded 1,038 Encoder 2 messages. The hardware input uses relative MIDI BF 56: clockwise 41/42/44/48, counterclockwise 3F/3E/3C/38. Earlier V22 native Scrub Forward/Rewind key-command bursts sometimes started normal playback without a Play press. V24 uses AGL_SCRUB and AGL_SCRUBSTATUS; directional asymmetry remains unresolved.
 
-The live Lua controller file is installed at:
-/Library/Audio/MIDI Device Scripts/Focusrite - Novation/Launchkey Mini MK4 37.device/config.lua
+Relevant next directions include investigating Logic's Scrub by MIDI value (-2-) command, characterizing AGL_SCRUB relative value semantics, and finding a host-supported scrub release mechanism that works without a permanent background helper.
 
-Save and quit Logic before changing this file. Preserve the prior script revision in Git, verify the expected checksum, and reopen Logic after installing. Historical install scripts are included for traceability and should be reviewed before execution.
+Please include the exact controller model, Logic version, stopped/playing state, turning direction, audible behavior, observed playhead movement, and reproducible MIDI messages when opening an issue or pull request.
 
-This GitHub repository contains source code, historical versions, and diagnostic traces. Logic projects, audio, application files, and binary preferences remain at their original locations on the Mac mini. No additional application bundle or duplicate workspace archive is maintained.
+## Source and provenance
 
-## Copyright and support
+The **history/** directory preserves earlier Lua experiments and diagnostic sources for reference. Its historical labels do not mean those versions are fully functional. The repository's main purpose is to share and improve the controller modifications, not to reconstruct every command run during development.
 
-The underlying controller integration is distributed by Focusrite/Novation, and the original copyright notices remain in its source. This repository documents modifications and debugging. It claims no independent license to third-party code.
+The original Logic controller integration comes from Focusrite/Novation. No separate upstream open-source license was identified in the provided Lua file; **the legal status of redistribution of the vendor code remains unverified**. The patch displays our changes separately from the complete file. This project is unofficial, experimental, and not endorsed by Novation or Apple.
 
-Official setup guide:
-https://support.novationmusic.com/hc/en-gb/articles/17051149371026-Launchkey-MK4-Logic-Pro-Setup
-
-Experimental reference only. No permanent background helper or LaunchAgent is required.
+[Official Launchkey MK4 Logic Pro setup guide](https://support.novationmusic.com/hc/en-gb/articles/17051149371026-Launchkey-MK4-Logic-Pro-Setup)
