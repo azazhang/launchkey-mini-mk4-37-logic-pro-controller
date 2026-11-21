@@ -798,7 +798,7 @@ delayedDisplay = nil
 delayedMidi = nil
 displayValueCache = {};
 encoderMode = MODE.encoderTransport
-LK37_DEV_REVISION = 'V26_TRANSPORT_FIRST_LOGIC13_ENCODER_ZONE_2026_11_20'
+LK37_DEV_REVISION = 'V27_LOGIC13_HW_TRANSPORT_POST_INIT_RESYNC_2026_11_20'
 positionDisplay = ''
 lk37StationaryResumeAt=nil
 lk37PlayActive = nil
@@ -816,6 +816,9 @@ feedbackBar = nil
 feedbackBeat = nil
 scrubStatusValue = nil
 lk37ScrubPending=false
+-- Logic 13 can start with the host Transport mode active while the Launchkey
+-- still outputs absolute Mixer/Plugin encoder CCs after entering DAW mode.
+lk37HwTransportStartupPending=true
 lk37ScrubLastInputAt=nil
 lk37ScrubIdleChecks=0
 lk37ScrubSessionCount=0
@@ -870,6 +873,7 @@ function controller_initialize(applicationName, deviceNewlyDetected)
   -- Every new Logic DAW session starts in Transport; the user can still
   -- select Plugin/Mixer/Sends/Custom modes with the Shift+pad keys.
   encoderMode = MODE.encoderTransport
+  lk37HwTransportStartupPending=true
   displayFocus = nil
   displayTimerStage = nil
   displayDeadline = nil
@@ -1039,6 +1043,30 @@ end
 
 function controller_midi_in(midi, port)
   if port == DAW_OUT then
+    if shift and midi[0]==0xB6 and
+      (midi[1]==CC_ENCODERMODE or midi[1]==CC_ENCODERMODE_LEGACY) then
+      -- A physical Shift+encoder mode selection is authoritative.
+      -- Unsolicited mode reports during DAW activation are not evidence
+      -- of the user's intent; they must not cancel startup resynchronization.
+      lk37HwTransportStartupPending=false
+    end
+    if not shift and encoderMode == MODE.encoderTransport and
+      midi[0]==0xBF and midi[1]>=0x15 and midi[1]<=0x1C then
+      -- Wrong hardware encoder mode after a cold Logic 13 restart.
+      -- Absolute CC21-28 means that Launchkey is still in Plugin/Mixer/Sends.
+      -- Do not forward that event as a volume or plugin adjustment.
+      -- Return the documented hardware Transport select on DAW In;
+      -- later rotations will be relative BF 55-5C.
+      devCounter.hwModeRepair=(devCounter.hwModeRepair or 0)+1
+      if devCounter.hwModeRepair<=8 then
+        print('LK37_V27_ABSOLUTE_ENCODER_HW_RECOVER', midi[1], midi[2])
+      end
+      -- controller_midi_in forwards host-facing input; use the existing
+      -- controller_timer_trigger outport pathway for hardware-directed MIDI.
+      appendDelayedMidi({0xB6,CC_ENCODERMODE,0x05,0xB6,0x45,0x7F})
+      settriggertimer(100)
+      return {}
+    end
     if midi[0]==0xb0 and midi[1]==0x74 and midi[2]==0x7f then
       devCounter.stopEvents=(devCounter.stopEvents or 0)+1
       devCounter.postStopRemaining=16
@@ -1588,6 +1616,17 @@ function CSFeedbackText(controlID, pText, length)
   -- print("CSFeedbackText", controlID, pText, length)
   local midi = {}
   local safeText = length > 0 and pText or ''
+  -- The device's DAW-mode activation always resets its encoder-mode hardware
+  -- default.  Reassert the Transport mode after Logic's live feedback begins.
+  -- One-shot, and cancelled by any explicit hardware mode selection.
+  if lk37HwTransportStartupPending and encoderMode==MODE.encoderTransport and
+    (controlID==kControlIDTransport or controlID==10 or
+     controlID==125 or controlID==126) then
+    midi=tableConcat(midi,{0xB6,CC_ENCODERMODE,0x05,
+      0xB6,0x45,0x7F})
+    lk37HwTransportStartupPending=false
+    print('LK37_V27_POST_INIT_HW_TRANSPORT_ASSERT', controlID)
+  end
   if controlID == 10 or controlID == 125 or controlID == 126 or controlID == 131 or controlID == 16 then
     local key = 'text_' .. tostring(controlID)
     devCounter[key] = (devCounter[key] or 0) + 1

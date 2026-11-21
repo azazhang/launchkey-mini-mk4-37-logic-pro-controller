@@ -22,7 +22,7 @@ Encoder 1's native nudge commands depend on the global Logic Nudge Value. For th
 
 ## Current known state
 
-V26 preserves V24's native AGL_SCRUB / AGL_SCRUBSTATUS route, Encoder 1 behavior, and scrub-status release on Encoder 1, Shift, Play or Stop. Encoder 2 retains the unresolved direction asymmetry: backward nearly correct, forward incorrect; scrub mode does not automatically exit solely when rotation stops.
+V27 preserves V24's native AGL_SCRUB / AGL_SCRUBSTATUS route, Encoder 1 behavior, and scrub-status release on Encoder 1, Shift, Play or Stop. Encoder 2 retains the unresolved direction asymmetry: backward nearly correct, forward incorrect; scrub mode does not automatically exit solely when rotation stops.
 
 **Logic 13 default mode:** V24 set the Launchkey hardware and the Lua display cache to Transport but left the Logic host's Encoder assignment-zone default at the first registered mode, Smart Controls. Logic 13 consequently showed the Transport pad lit while Encoder movements followed another host mode. V25 attempted a first-event synchronization; its first injected Encoder 1 test left the host mode unchanged, so the candidate was rejected. V26 instead moves the existing Encoder Transport mode block to the first position in the Encoder zone, without changing any mappings. Upon per-device Auto re-registration in Logic 13.0, the host selected Encoder Transport immediately, and injected clockwise/counterclockwise Encoder 1 events moved and restored the playhead exactly.
 
@@ -32,13 +32,13 @@ After a real quit and restart with V26 installed, the physical Launchkey showed 
 
 The hardware mode is a distinct state: Novation documents that entering DAW mode defaults hardware encoders to Plugin, and selecting Transport requires B6 1E 05. The passive physical MIDI capture attempts on Logic 13 produced no events, including after expanding the filters to include absolute BF 15-1C, so **the actual physical CC mode in the failed session has not been measured**.
 
-A local, unreleased V27 candidate reasserts hardware Transport during initial host feedback and suppresses/repairs stray absolute encoder CCs while Lua is in Transport. It loaded and re-registered successfully, but **cold-start behavior is unverified**. Its synthetic nudge trial produced asymmetric movement, which was not attributed to the candidate; the project's original playhead position was subsequently restored through Logic's accessibility controls. Preserve the frozen V26 and V24 scripts for rollback. Do not describe V27 as a verified release.
+V27 reasserts hardware Transport during initial host feedback and suppresses/repairs stray absolute encoder CCs while Lua is in Transport. It loaded and re-registered successfully, and **the user confirmed correct default knob behavior after a full Logic 13 restart on November 21**. This establishes a single successful real-device restart; repeatability remains unverified and the specific recovery path responsible has not been isolated. Its earlier synthetic nudge trial produced asymmetric movement, which was not attributed to the candidate; the project's original playhead position was subsequently restored through Logic's accessibility controls. V26 and V24 are preserved for rollback.
 
 ## Next avenues — assess separately on Logic 13
 
 1. Test the native AGL_SCRUB and AGL_SCRUBSTATUS modes directly, including host value semantics, two's-complement negative scaling, ACP_BEAT versus ACP_FORMAT, and audio audition in each direction.
 2. Investigate the Logic Key Command named Scrub by MIDI value (-2-). Characterize the exact MIDI value convention, gesture end/release, bidirectional audio, and integration without a permanent service.
 3. Investigate supported host-directed callbacks and feedback state transitions. Distinguish device-directed timer MIDI from internal Logic control-surface input.
-4. Obtain physical-device confirmation that Logic 13 starts with Transport behavior and the preserved display; then test audible Encoder 2 scrubbing separately.
+4. Check V27 startup reliability over additional ordinary Logic restarts without pressing Shift+Transport; test audible Encoder 2 scrubbing separately.
 
 The passive trace cannot determine audible sound, DSP engine output, or OLED text. Real hardware and listening tests remain required before claiming scrubbing works.

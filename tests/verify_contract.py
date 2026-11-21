@@ -10,7 +10,8 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 BASELINES = {
-    "config.lua": "383f77167304739f18363652dcbe2fedbb276886e7e37d70f80c0d0b20725faf",
+    "config.lua": "cd87b106b670c953d41101082cf8f4727a61650023ab194fdc64873719c0c8f8",
+    "history/CandidateV26/config.lua": "383f77167304739f18363652dcbe2fedbb276886e7e37d70f80c0d0b20725faf",
     "history/CandidateV24/config.lua": "30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d",
     "recovery-v22.lua": "3bfb17200963a23a67df5dc021fcf8cd36e73124e3dbfa6a2032bff426a2f35d",
     "history/StableV19/config.lua": "6c697838aa761d263ce25e5d548118af56be2b203a852003578c1f64b28a1fe0",
@@ -42,6 +43,11 @@ for pattern,desc in [
     ("positionDisplay", "position display state"),
     ("TRANSPORT_ENCODER_NAMES", "encoder title table"),
     ("function controller_timer_trigger", "display timer"),
+    ("lk37HwTransportStartupPending=true", "Logic 13 hardware startup resynchronization flag"),
+    ("LK37_V27_POST_INIT_HW_TRANSPORT_ASSERT", "post-initialization hardware Transport assert"),
+    ("LK37_V27_ABSOLUTE_ENCODER_HW_RECOVER", "absolute-mode encoder recovery"),
+    ("midi[1]>=0x15 and midi[1]<=0x1C", "absolute-CC mismatch detection"),
+
 ]:
     if pattern not in s:
         errors.append("Missing expected code anchor: " + desc)
@@ -78,6 +84,6 @@ if errors:
     print("FAIL")
     print("\n".join(errors))
     sys.exit(1)
-print("PASS: 6 exact baseline checksums; 8 encoder labels; host-first Transport mode; default and display anchors;")
+print("PASS: 7 exact baseline checksums; 8 encoder labels; host-first Transport mode; default and display anchors;")
 print(f"      134 contiguous controller indices; {manifest_files} archived files validated.")
 print("NOTE: Static checks cannot establish audio-scrub behavior or live Logic runtime compatibility.")
