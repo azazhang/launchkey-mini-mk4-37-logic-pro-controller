@@ -1,0 +1,570 @@
+SCHEMA_BEGIN
+DEVICE Launchkey Mini MK4 37 Focusrite - Novation
+ITEM	0	{string:controlID=number:0,string:fbType=number:106,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:74,number:3=number:105},string:name=string:Capture Midi,string:outport=string:DAW In}
+ITEM	1	{string:controlID=number:1,string:fbType=number:106,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:75,number:3=number:105},string:name=string:Quantize,string:outport=string:DAW In}
+ITEM	2	{string:controlID=number:2,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:76,number:3=number:105},string:name=string:Click,string:outport=string:DAW In}
+ITEM	3	{string:controlID=number:3,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:77,number:3=number:105},string:name=string:Undo,string:outport=string:DAW In}
+ITEM	4	{string:controlID=number:4,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:115,number:3=number:105},string:name=string:Play,string:outport=string:DAW In}
+ITEM	5	{string:controlID=number:5,string:fbType=number:106,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:116,number:3=number:105},string:name=string:Stop,string:outport=string:DAW In}
+ITEM	6	{string:controlID=number:6,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:117,number:3=number:105},string:name=string:Record,string:outport=string:DAW In}
+ITEM	7	{string:controlID=number:7,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:118,number:3=number:105},string:name=string:Loop,string:outport=string:DAW In}
+ITEM	8	{string:controlID=number:8,string:fbType=number:107,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:103,number:3=number:127},string:name=string:Track Left,string:outport=string:DAW In}
+ITEM	9	{string:controlID=number:9,string:fbType=number:107,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:102,number:3=number:127},string:name=string:Track Right,string:outport=string:DAW In}
+ITEM	10	{string:controlID=number:10,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:85,number:3=number:105},string:name=string:Encoder 1,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	11	{string:controlID=number:11,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:86,number:3=number:105},string:name=string:Encoder 2,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	12	{string:controlID=number:12,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:87,number:3=number:105},string:name=string:Encoder 3,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	13	{string:controlID=number:13,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:88,number:3=number:105},string:name=string:Encoder 4,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	14	{string:controlID=number:14,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:89,number:3=number:105},string:name=string:Encoder 5,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	15	{string:controlID=number:15,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:90,number:3=number:105},string:name=string:Encoder 6,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	16	{string:controlID=number:16,string:fbType=number:108,string:hasFeedback=boolean:true,string:hasFeedbackValueText=boolean:true,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:91,number:3=number:105},string:name=string:Encoder 7,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	17	{string:controlID=number:17,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:92,number:3=number:105},string:name=string:Encoder 8,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	18	{string:controlID=number:18,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:96,number:3=number:105},string:name=string:Pad 1,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	19	{string:controlID=number:19,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:97,number:3=number:105},string:name=string:Pad 2,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	20	{string:controlID=number:20,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:98,number:3=number:105},string:name=string:Pad 3,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	21	{string:controlID=number:21,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:99,number:3=number:105},string:name=string:Pad 4,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	22	{string:controlID=number:22,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:100,number:3=number:105},string:name=string:Pad 5,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	23	{string:controlID=number:23,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:101,number:3=number:105},string:name=string:Pad 6,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	24	{string:controlID=number:24,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:102,number:3=number:105},string:name=string:Pad 7,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	25	{string:controlID=number:25,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:103,number:3=number:105},string:name=string:Pad 8,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	26	{string:controlID=number:26,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:112,number:3=number:105},string:name=string:Pad 9,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	27	{string:controlID=number:27,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:113,number:3=number:105},string:name=string:Pad 10,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	28	{string:controlID=number:28,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:114,number:3=number:105},string:name=string:Pad 11,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	29	{string:controlID=number:29,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:115,number:3=number:105},string:name=string:Pad 12,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	30	{string:controlID=number:30,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:116,number:3=number:105},string:name=string:Pad 13,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	31	{string:controlID=number:31,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:117,number:3=number:105},string:name=string:Pad 14,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	32	{string:controlID=number:32,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:118,number:3=number:105},string:name=string:Pad 15,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	33	{string:controlID=number:33,string:inport=string:DAW Out,string:midi={number:1=number:144,number:2=number:119,number:3=number:105},string:name=string:Pad 16,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	34	{string:controlID=number:34,string:name=string:Session Mode Toggle}
+ITEM	35	{string:controlID=number:35,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:13,number:3=number:105},string:name=string:Master Fader,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	36	{string:controlID=number:36,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:5,number:3=number:105},string:name=string:Fader 1,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	37	{string:controlID=number:37,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:6,number:3=number:105},string:name=string:Fader 2,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	38	{string:controlID=number:38,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:7,number:3=number:105},string:name=string:Fader 3,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	39	{string:controlID=number:39,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:8,number:3=number:105},string:name=string:Fader 4,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	40	{string:controlID=number:40,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:9,number:3=number:105},string:name=string:Fader 5,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	41	{string:controlID=number:41,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:10,number:3=number:105},string:name=string:Fader 6,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	42	{string:controlID=number:42,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:11,number:3=number:105},string:name=string:Fader 7,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	43	{string:controlID=number:43,string:fbType=number:108,string:inport=string:DAW Out,string:midi={number:1=number:191,number:2=number:12,number:3=number:105},string:name=string:Fader 8,string:outport=string:DAW In,string:valueMode=number:112}
+ITEM	44	{string:controlID=number:44,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:176,number:2=number:45,number:3=number:105},string:name=string:Arm/Select,string:outport=string:DAW In}
+ITEM	45	{string:controlID=number:45,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:37,number:3=number:105},string:name=string:Fader Pad 1,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	46	{string:controlID=number:46,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:38,number:3=number:105},string:name=string:Fader Pad 2,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	47	{string:controlID=number:47,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:39,number:3=number:105},string:name=string:Fader Pad 3,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	48	{string:controlID=number:48,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:40,number:3=number:105},string:name=string:Fader Pad 4,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	49	{string:controlID=number:49,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:41,number:3=number:105},string:name=string:Fader Pad 5,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	50	{string:controlID=number:50,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:42,number:3=number:105},string:name=string:Fader Pad 6,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	51	{string:controlID=number:51,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:43,number:3=number:105},string:name=string:Fader Pad 7,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	52	{string:controlID=number:52,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:44,number:3=number:105},string:name=string:Fader Pad 8,string:outport=string:DAW In,string:valueMode=number:111}
+ITEM	53	{string:controlID=number:53,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:2},string:name=string:Plugin,string:outport=string:DAW In}
+ITEM	54	{string:controlID=number:54,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:1},string:name=string:Mixer,string:outport=string:DAW In}
+ITEM	55	{string:controlID=number:55,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:4},string:name=string:Sends,string:outport=string:DAW In}
+ITEM	56	{string:controlID=number:56,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:5},string:name=string:Transport,string:outport=string:DAW In}
+ITEM	57	{string:controlID=number:57,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:6},string:name=string:Encoder Custom 1,string:outport=string:DAW In}
+ITEM	58	{string:controlID=number:58,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:7},string:name=string:Encoder Custom 2,string:outport=string:DAW In}
+ITEM	59	{string:controlID=number:59,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:8},string:name=string:Encoder Custom 3,string:outport=string:DAW In}
+ITEM	60	{string:controlID=number:60,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:30,number:3=number:9},string:name=string:Encoder Custom 4,string:outport=string:DAW In}
+ITEM	61	{string:controlID=number:61,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:2},string:name=string:DAW,string:outport=string:DAW In}
+ITEM	62	{string:controlID=number:62,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:15},string:name=string:Drum,string:outport=string:DAW In}
+ITEM	63	{string:controlID=number:63,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:4},string:name=string:User Chord,string:outport=string:DAW In}
+ITEM	64	{string:controlID=number:64,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:13},string:name=string:Arp Pattern,string:outport=string:DAW In}
+ITEM	65	{string:controlID=number:65,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:5},string:name=string:Pad Custom 1,string:outport=string:DAW In}
+ITEM	66	{string:controlID=number:66,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:6},string:name=string:Pad Custom 2,string:outport=string:DAW In}
+ITEM	67	{string:controlID=number:67,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:7},string:name=string:Pad Custom 3,string:outport=string:DAW In}
+ITEM	68	{string:controlID=number:68,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:29,number:3=number:8},string:name=string:Pad Custom 4,string:outport=string:DAW In}
+ITEM	69	{string:controlID=number:69,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:176,number:2=number:51,number:3=number:105},string:name=string:Encoder Page Up,string:outport=string:DAW In}
+ITEM	70	{string:controlID=number:70,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:176,number:2=number:52,number:3=number:105},string:name=string:Encoder Page Down,string:outport=string:DAW In}
+ITEM	71	{string:controlID=number:71,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:106,number:3=number:105},string:name=string:Pad Page Up,string:outport=string:DAW In}
+ITEM	72	{string:controlID=number:72,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:107,number:3=number:105},string:name=string:Pad Page Down,string:outport=string:DAW In}
+ITEM	73	{string:controlID=number:73,string:inport=string:DAW Out,string:midi={number:1=number:182,number:2=number:63,number:3=number:105},string:name=string:Shift,string:outport=string:DAW In}
+ITEM	74	{string:controlID=number:74,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:176,number:2=number:105,number:3=number:105},string:name=string:Function,string:outport=string:DAW In}
+ITEM	75	{string:controlID=number:75,string:name=string:Track 1}
+ITEM	76	{string:controlID=number:76,string:name=string:Track 2}
+ITEM	77	{string:controlID=number:77,string:name=string:Track 3}
+ITEM	78	{string:controlID=number:78,string:name=string:Track 4}
+ITEM	79	{string:controlID=number:79,string:name=string:Track 5}
+ITEM	80	{string:controlID=number:80,string:name=string:Track 6}
+ITEM	81	{string:controlID=number:81,string:name=string:Track 7}
+ITEM	82	{string:controlID=number:82,string:name=string:Track 8}
+ITEM	83	{string:controlID=number:83,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:78,number:3=number:105},string:name=string:Next Marker,string:outport=string:DAW In}
+ITEM	84	{string:controlID=number:84,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:79,number:3=number:105},string:name=string:Previous Marker,string:outport=string:DAW In}
+ITEM	85	{string:controlID=number:85,string:name=string:Focussed Track}
+ITEM	86	{string:controlID=number:86,string:fbType=number:107,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:109,number:3=number:127},string:name=string:Track Left Shift,string:outport=string:DAW In}
+ITEM	87	{string:controlID=number:87,string:fbType=number:107,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:108,number:3=number:127},string:name=string:Track Right Shift,string:outport=string:DAW In}
+ITEM	88	{string:controlID=number:88,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:0},string:name=string:Encoder Plugin 1,string:outport=string:DAW In}
+ITEM	89	{string:controlID=number:89,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:1},string:name=string:Encoder Plugin 2,string:outport=string:DAW In}
+ITEM	90	{string:controlID=number:90,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:2},string:name=string:Encoder Mixer Volume,string:outport=string:DAW In}
+ITEM	91	{string:controlID=number:91,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:3},string:name=string:Encoder Mixer Pan,string:outport=string:DAW In}
+ITEM	92	{string:controlID=number:92,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:4},string:name=string:Encoder Mixer Eq,string:outport=string:DAW In}
+ITEM	93	{string:controlID=number:93,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:5},string:name=string:Encoder Sends 1,string:outport=string:DAW In}
+ITEM	94	{string:controlID=number:94,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:6},string:name=string:Encoder Sends 2,string:outport=string:DAW In}
+ITEM	95	{string:controlID=number:95,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:7},string:name=string:Encoder Sends 3,string:outport=string:DAW In}
+ITEM	96	{string:controlID=number:96,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:8},string:name=string:Encoder Sends 4,string:outport=string:DAW In}
+ITEM	97	{string:controlID=number:97,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:9},string:name=string:Encoder Sends 5,string:outport=string:DAW In}
+ITEM	98	{string:controlID=number:98,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:10},string:name=string:Encoder Sends 6,string:outport=string:DAW In}
+ITEM	99	{string:controlID=number:99,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:11},string:name=string:Encoder Sends 7,string:outport=string:DAW In}
+ITEM	100	{string:controlID=number:100,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:12},string:name=string:Encoder Sends 8,string:outport=string:DAW In}
+ITEM	101	{string:controlID=number:101,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:13},string:name=string:Encoder Sends 9,string:outport=string:DAW In}
+ITEM	102	{string:controlID=number:102,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:14},string:name=string:Encoder Sends 10,string:outport=string:DAW In}
+ITEM	103	{string:controlID=number:103,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:15},string:name=string:Encoder Sends 11,string:outport=string:DAW In}
+ITEM	104	{string:controlID=number:104,string:inport=string:DAW Out,string:midi={number:1=number:189,number:2=number:0,number:3=number:16},string:name=string:Encoder Sends 12,string:outport=string:DAW In}
+ITEM	105	{string:controlID=number:105,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:2},string:name=string:Legacy Plugin,string:outport=string:DAW In}
+ITEM	106	{string:controlID=number:106,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:1},string:name=string:Legacy Mixer,string:outport=string:DAW In}
+ITEM	107	{string:controlID=number:107,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:4},string:name=string:Legacy Sends,string:outport=string:DAW In}
+ITEM	108	{string:controlID=number:108,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:5},string:name=string:Legacy Transport,string:outport=string:DAW In}
+ITEM	109	{string:controlID=number:109,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:6},string:name=string:Legacy Encoder Custom 1,string:outport=string:DAW In}
+ITEM	110	{string:controlID=number:110,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:7},string:name=string:Legacy Encoder Custom 2,string:outport=string:DAW In}
+ITEM	111	{string:controlID=number:111,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:8},string:name=string:Legacy Encoder Custom 3,string:outport=string:DAW In}
+ITEM	112	{string:controlID=number:112,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:65,number:3=number:9},string:name=string:Legacy Encoder Custom 4,string:outport=string:DAW In}
+ITEM	113	{string:controlID=number:113,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:2},string:name=string:Legacy DAW,string:outport=string:DAW In}
+ITEM	114	{string:controlID=number:114,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:15},string:name=string:Legacy Drum,string:outport=string:DAW In}
+ITEM	115	{string:controlID=number:115,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:4},string:name=string:Legacy User Chord,string:outport=string:DAW In}
+ITEM	116	{string:controlID=number:116,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:13},string:name=string:Legacy Arp Pattern,string:outport=string:DAW In}
+ITEM	117	{string:controlID=number:117,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:5},string:name=string:Legacy Pad Custom 1,string:outport=string:DAW In}
+ITEM	118	{string:controlID=number:118,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:6},string:name=string:Legacy Pad Custom 2,string:outport=string:DAW In}
+ITEM	119	{string:controlID=number:119,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:7},string:name=string:Legacy Pad Custom 3,string:outport=string:DAW In}
+ITEM	120	{string:controlID=number:120,string:fbType=number:107,string:inport=string:DAW Out,string:maxVal=number:1,string:midi={number:1=number:182,number:2=number:64,number:3=number:8},string:name=string:Legacy Pad Custom 4,string:outport=string:DAW In}
+ITEM	121	{string:controlID=number:121,string:inport=string:DAW Out,string:midi={number:1=number:182,number:2=number:72,number:3=number:105},string:name=string:Legacy Shift,string:outport=string:DAW In}
+ITEM	122	{string:controlID=number:122,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:93,number:3=number:105},string:name=string:Playhead Forward Step,string:outport=string:DAW In}
+ITEM	123	{string:controlID=number:123,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:94,number:3=number:105},string:name=string:Playhead Rewind Step,string:outport=string:DAW In}
+ITEM	125	{string:controlID=number:125,string:fbType=number:108,string:hasFeedback=boolean:true,string:hasFeedbackValueText=boolean:true,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:98,number:3=number:105},string:name=string:Probe Clock Bar,string:outport=string:DAW In}
+ITEM	126	{string:controlID=number:126,string:fbType=number:108,string:hasFeedback=boolean:true,string:hasFeedbackValueText=boolean:true,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:99,number:3=number:105},string:name=string:Probe Clock Beat,string:outport=string:DAW In}
+ITEM	127	{string:controlID=number:127,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:100,number:3=number:105},string:name=string:Alt Scrub Beat,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	128	{string:controlID=number:128,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:101,number:3=number:105},string:name=string:Alt Scrub Format,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	129	{string:controlID=number:129,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:102,number:3=number:105},string:name=string:Alt Shuttle,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	130	{string:controlID=number:130,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:103,number:3=number:105},string:name=string:Alt Scrub Status,string:outport=string:DAW In,string:valueFormat=number:110,string:valueMode=number:109}
+ITEM	131	{string:controlID=number:131,string:fbType=number:108,string:hasFeedback=boolean:true,string:hasFeedbackValueText=boolean:true,string:inport=string:DAW Out,string:midi={number:1=number:176,number:2=number:104,number:3=number:105},string:name=string:Probe Clock Format,string:outport=string:DAW In}
+ASSIGN	1	{string:zone=string:Global}
+ASSIGN	2	{string:mode=string:Global}
+ASSIGN	3	{string:control=string:Shift,string:setMode=string:Shift}
+ASSIGN	4	{string:control=string:Legacy Shift,string:setMode=string:Shift}
+ASSIGN	5	{string:control=string:Track 1,string:faderBankTrack=number:0,string:trackParam=number:113}
+ASSIGN	6	{string:control=string:Track 2,string:faderBankTrack=number:1,string:trackParam=number:113}
+ASSIGN	7	{string:control=string:Track 3,string:faderBankTrack=number:2,string:trackParam=number:113}
+ASSIGN	8	{string:control=string:Track 4,string:faderBankTrack=number:3,string:trackParam=number:113}
+ASSIGN	9	{string:control=string:Track 5,string:faderBankTrack=number:4,string:trackParam=number:113}
+ASSIGN	10	{string:control=string:Track 6,string:faderBankTrack=number:5,string:trackParam=number:113}
+ASSIGN	11	{string:control=string:Track 7,string:faderBankTrack=number:6,string:trackParam=number:113}
+ASSIGN	12	{string:control=string:Track 8,string:faderBankTrack=number:7,string:trackParam=number:113}
+ASSIGN	13	{string:control=string:Track 1,string:faderBankTrack=number:0,string:trackParam=number:104}
+ASSIGN	14	{string:control=string:Track 2,string:faderBankTrack=number:1,string:trackParam=number:104}
+ASSIGN	15	{string:control=string:Track 3,string:faderBankTrack=number:2,string:trackParam=number:104}
+ASSIGN	16	{string:control=string:Track 4,string:faderBankTrack=number:3,string:trackParam=number:104}
+ASSIGN	17	{string:control=string:Track 5,string:faderBankTrack=number:4,string:trackParam=number:104}
+ASSIGN	18	{string:control=string:Track 6,string:faderBankTrack=number:5,string:trackParam=number:104}
+ASSIGN	19	{string:control=string:Track 7,string:faderBankTrack=number:6,string:trackParam=number:104}
+ASSIGN	20	{string:control=string:Track 8,string:faderBankTrack=number:7,string:trackParam=number:104}
+ASSIGN	21	{string:CSTrack=boolean:true,string:control=string:Focussed Track,string:trackParam=number:113}
+ASSIGN	22	{string:CSTrack=boolean:true,string:control=string:Focussed Track,string:trackParam=number:114}
+ASSIGN	23	{string:control=string:Track Left,string:keyCmd=number:1272}
+ASSIGN	24	{string:control=string:Track Right,string:keyCmd=number:1273}
+ASSIGN	25	{string:mode=string:Shift}
+ASSIGN	26	{string:control=string:Shift,string:setMode=string:Global}
+ASSIGN	27	{string:control=string:Legacy Shift,string:setMode=string:Global}
+ASSIGN	28	{string:CSGroupObj=number:115,string:bankType=number:116,string:control=string:Track Left Shift,string:maxVal=number:1,string:multiply=number:-1.0,string:paramName=string:Track Bank,string:valueMode=number:109}
+ASSIGN	29	{string:CSGroupObj=number:115,string:bankType=number:116,string:control=string:Track Right Shift,string:maxVal=number:1,string:paramName=string:Track Bank,string:valueMode=number:109}
+ASSIGN	30	{string:control=string:Track Right,string:keyCmd=number:1272}
+ASSIGN	31	{string:control=string:Track Left,string:keyCmd=number:1273}
+ASSIGN	32	{string:CSTrack=boolean:true,string:control=string:Focussed Track,string:trackParam=number:113}
+ASSIGN	33	{string:CSTrack=boolean:true,string:control=string:Focussed Track,string:trackParam=number:114}
+ASSIGN	34	{string:zone=string:Transport}
+ASSIGN	35	{string:mode=string:Transport}
+ASSIGN	36	{string:control=string:Shift,string:setMode=string:Shift Transport}
+ASSIGN	37	{string:control=string:Legacy Shift,string:setMode=string:Shift Transport}
+ASSIGN	38	{string:control=string:Capture Midi,string:keyCmd=number:542}
+ASSIGN	39	{string:control=string:Quantize,string:keyCmd=number:110}
+ASSIGN	40	{string:control=string:Click,string:keyCmd=number:474}
+ASSIGN	41	{string:control=string:Undo,string:keyCmd=number:761}
+ASSIGN	42	{string:control=string:Play,string:keyCmd=number:535}
+ASSIGN	43	{string:control=string:Stop,string:keyCmd=number:5}
+ASSIGN	44	{string:control=string:Record,string:keyCmd=number:7}
+ASSIGN	45	{string:control=string:Loop,string:keyCmd=number:15}
+ASSIGN	46	{string:mode=string:Shift Transport}
+ASSIGN	47	{string:control=string:Shift,string:setMode=string:Transport}
+ASSIGN	48	{string:control=string:Legacy Shift,string:setMode=string:Transport}
+ASSIGN	49	{string:control=string:Undo,string:keyCmd=number:796}
+ASSIGN	50	{string:control=string:Stop,string:keyCmd=number:5}
+ASSIGN	51	{string:control=string:Capture Midi,string:keyCmd=number:542}
+ASSIGN	52	{string:zone=string:Pads}
+ASSIGN	53	{string:control=string:DAW,string:paramName=string:DAW,string:setMode=string:Pad Function,Select/Arm}
+ASSIGN	54	{string:control=string:Drum,string:paramName=string:Drum,string:setMode=string:Drum}
+ASSIGN	55	{string:control=string:Arp Pattern,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	56	{string:control=string:Pad Custom 1,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	57	{string:control=string:Pad Custom 2,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	58	{string:control=string:Pad Custom 3,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	59	{string:control=string:Pad Custom 4,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	60	{string:control=string:Legacy DAW,string:paramName=string:DAW,string:setMode=string:Pad Function,Select/Arm}
+ASSIGN	61	{string:control=string:Legacy Drum,string:paramName=string:Drum,string:setMode=string:Drum}
+ASSIGN	62	{string:control=string:Legacy Arp Pattern,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	63	{string:control=string:Legacy Pad Custom 1,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	64	{string:control=string:Legacy Pad Custom 2,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	65	{string:control=string:Legacy Pad Custom 3,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	66	{string:control=string:Legacy Pad Custom 4,string:paramName=string:Pad Other,string:setMode=string:Pad Other}
+ASSIGN	67	{string:mode=string:Pad Function,Select/Arm}
+ASSIGN	68	{string:control=string:Pad Page Down,string:setMode=string:Pad Function,Solo/Mute}
+ASSIGN	69	{string:control=string:Function,string:setMode=string:Pad Function,Live Loops}
+ASSIGN	70	{string:control=string:Pad 1,string:faderBankTrack=number:0,string:trackParam=number:104}
+ASSIGN	71	{string:control=string:Pad 2,string:faderBankTrack=number:1,string:trackParam=number:104}
+ASSIGN	72	{string:control=string:Pad 3,string:faderBankTrack=number:2,string:trackParam=number:104}
+ASSIGN	73	{string:control=string:Pad 4,string:faderBankTrack=number:3,string:trackParam=number:104}
+ASSIGN	74	{string:control=string:Pad 5,string:faderBankTrack=number:4,string:trackParam=number:104}
+ASSIGN	75	{string:control=string:Pad 6,string:faderBankTrack=number:5,string:trackParam=number:104}
+ASSIGN	76	{string:control=string:Pad 7,string:faderBankTrack=number:6,string:trackParam=number:104}
+ASSIGN	77	{string:control=string:Pad 8,string:faderBankTrack=number:7,string:trackParam=number:104}
+ASSIGN	78	{string:control=string:Pad 1,string:faderBankTrack=number:0,string:trackParam=number:113}
+ASSIGN	79	{string:control=string:Pad 2,string:faderBankTrack=number:1,string:trackParam=number:113}
+ASSIGN	80	{string:control=string:Pad 3,string:faderBankTrack=number:2,string:trackParam=number:113}
+ASSIGN	81	{string:control=string:Pad 4,string:faderBankTrack=number:3,string:trackParam=number:113}
+ASSIGN	82	{string:control=string:Pad 5,string:faderBankTrack=number:4,string:trackParam=number:113}
+ASSIGN	83	{string:control=string:Pad 6,string:faderBankTrack=number:5,string:trackParam=number:113}
+ASSIGN	84	{string:control=string:Pad 7,string:faderBankTrack=number:6,string:trackParam=number:113}
+ASSIGN	85	{string:control=string:Pad 8,string:faderBankTrack=number:7,string:trackParam=number:113}
+ASSIGN	86	{string:control=string:Pad 9,string:faderBankTrack=number:0,string:trackParam=number:101}
+ASSIGN	87	{string:control=string:Pad 10,string:faderBankTrack=number:1,string:trackParam=number:101}
+ASSIGN	88	{string:control=string:Pad 11,string:faderBankTrack=number:2,string:trackParam=number:101}
+ASSIGN	89	{string:control=string:Pad 12,string:faderBankTrack=number:3,string:trackParam=number:101}
+ASSIGN	90	{string:control=string:Pad 13,string:faderBankTrack=number:4,string:trackParam=number:101}
+ASSIGN	91	{string:control=string:Pad 14,string:faderBankTrack=number:5,string:trackParam=number:101}
+ASSIGN	92	{string:control=string:Pad 15,string:faderBankTrack=number:6,string:trackParam=number:101}
+ASSIGN	93	{string:control=string:Pad 16,string:faderBankTrack=number:7,string:trackParam=number:101}
+ASSIGN	94	{string:mode=string:Pad Function,Solo/Mute}
+ASSIGN	95	{string:control=string:Pad Page Up,string:setMode=string:Pad Function,Select/Arm}
+ASSIGN	96	{string:control=string:Function,string:setMode=string:Pad Function,Live Loops}
+ASSIGN	97	{string:control=string:Pad 1,string:faderBankTrack=number:0,string:trackParam=number:103}
+ASSIGN	98	{string:control=string:Pad 2,string:faderBankTrack=number:1,string:trackParam=number:103}
+ASSIGN	99	{string:control=string:Pad 3,string:faderBankTrack=number:2,string:trackParam=number:103}
+ASSIGN	100	{string:control=string:Pad 4,string:faderBankTrack=number:3,string:trackParam=number:103}
+ASSIGN	101	{string:control=string:Pad 5,string:faderBankTrack=number:4,string:trackParam=number:103}
+ASSIGN	102	{string:control=string:Pad 6,string:faderBankTrack=number:5,string:trackParam=number:103}
+ASSIGN	103	{string:control=string:Pad 7,string:faderBankTrack=number:6,string:trackParam=number:103}
+ASSIGN	104	{string:control=string:Pad 8,string:faderBankTrack=number:7,string:trackParam=number:103}
+ASSIGN	105	{string:control=string:Pad 9,string:faderBankTrack=number:0,string:trackParam=number:102}
+ASSIGN	106	{string:control=string:Pad 10,string:faderBankTrack=number:1,string:trackParam=number:102}
+ASSIGN	107	{string:control=string:Pad 11,string:faderBankTrack=number:2,string:trackParam=number:102}
+ASSIGN	108	{string:control=string:Pad 12,string:faderBankTrack=number:3,string:trackParam=number:102}
+ASSIGN	109	{string:control=string:Pad 13,string:faderBankTrack=number:4,string:trackParam=number:102}
+ASSIGN	110	{string:control=string:Pad 14,string:faderBankTrack=number:5,string:trackParam=number:102}
+ASSIGN	111	{string:control=string:Pad 15,string:faderBankTrack=number:6,string:trackParam=number:102}
+ASSIGN	112	{string:control=string:Pad 16,string:faderBankTrack=number:7,string:trackParam=number:102}
+ASSIGN	113	{string:mode=string:Shift Live Loops}
+ASSIGN	114	{string:control=string:Shift,string:setMode=string:Pad Function,Live Loops}
+ASSIGN	115	{string:control=string:Legacy Shift,string:setMode=string:Pad Function,Live Loops}
+ASSIGN	116	{string:control=string:Function,string:setMode=string:Pad Function,Select/Arm}
+ASSIGN	117	{string:control=string:Pad Page Up,string:keyCmd=number:1272}
+ASSIGN	118	{string:control=string:Pad Page Down,string:keyCmd=number:1273}
+ASSIGN	119	{string:CSGroupObj=number:117,string:bankType=number:118,string:control=string:Track Left,string:exclusive=boolean:true,string:multiply=number:1.0,string:valueMode=number:109}
+ASSIGN	120	{string:CSGroupObj=number:117,string:bankType=number:118,string:control=string:Track Right,string:exclusive=boolean:true,string:multiply=number:-1.0,string:valueMode=number:109}
+ASSIGN	121	{string:control=string:Pad 1,string:paramOffset=number:0,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	122	{string:control=string:Pad 2,string:paramOffset=number:1,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	123	{string:control=string:Pad 3,string:paramOffset=number:2,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	124	{string:control=string:Pad 4,string:paramOffset=number:3,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	125	{string:control=string:Pad 5,string:paramOffset=number:4,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	126	{string:control=string:Pad 6,string:paramOffset=number:5,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	127	{string:control=string:Pad 7,string:paramOffset=number:6,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	128	{string:control=string:Pad 8,string:paramOffset=number:7,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	129	{string:control=string:Pad 9,string:globalObj=number:121,string:liveLoopsColumn=number:0,string:valueMode=number:120}
+ASSIGN	130	{string:control=string:Pad 10,string:globalObj=number:121,string:liveLoopsColumn=number:1,string:valueMode=number:120}
+ASSIGN	131	{string:control=string:Pad 11,string:globalObj=number:121,string:liveLoopsColumn=number:2,string:valueMode=number:120}
+ASSIGN	132	{string:control=string:Pad 12,string:globalObj=number:121,string:liveLoopsColumn=number:3,string:valueMode=number:120}
+ASSIGN	133	{string:control=string:Pad 13,string:globalObj=number:121,string:liveLoopsColumn=number:4,string:valueMode=number:120}
+ASSIGN	134	{string:control=string:Pad 14,string:globalObj=number:121,string:liveLoopsColumn=number:5,string:valueMode=number:120}
+ASSIGN	135	{string:control=string:Pad 15,string:globalObj=number:121,string:liveLoopsColumn=number:6,string:valueMode=number:120}
+ASSIGN	136	{string:control=string:Pad 16,string:globalObj=number:121,string:liveLoopsColumn=number:7,string:valueMode=number:120}
+ASSIGN	137	{string:mode=string:Pad Function,Live Loops}
+ASSIGN	138	{string:control=string:Shift,string:setMode=string:Shift Live Loops}
+ASSIGN	139	{string:control=string:Legacy Shift,string:setMode=string:Shift Live Loops}
+ASSIGN	140	{string:control=string:Function,string:setMode=string:Pad Function,Select/Arm}
+ASSIGN	141	{string:control=string:Pad Page Up,string:keyCmd=number:1272}
+ASSIGN	142	{string:control=string:Pad Page Down,string:keyCmd=number:1273}
+ASSIGN	143	{string:CSGroupObj=number:117,string:bankType=number:118,string:control=string:Track Left,string:exclusive=boolean:true,string:multiply=number:-1.0,string:valueMode=number:109}
+ASSIGN	144	{string:CSGroupObj=number:117,string:bankType=number:118,string:control=string:Track Right,string:exclusive=boolean:true,string:valueMode=number:109}
+ASSIGN	145	{string:control=string:Pad 1,string:paramOffset=number:0,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	146	{string:control=string:Pad 2,string:paramOffset=number:1,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	147	{string:control=string:Pad 3,string:paramOffset=number:2,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	148	{string:control=string:Pad 4,string:paramOffset=number:3,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	149	{string:control=string:Pad 5,string:paramOffset=number:4,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	150	{string:control=string:Pad 6,string:paramOffset=number:5,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	151	{string:control=string:Pad 7,string:paramOffset=number:6,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	152	{string:control=string:Pad 8,string:paramOffset=number:7,string:trackParam=number:119,string:valueMode=number:120}
+ASSIGN	153	{string:control=string:Pad 9,string:globalObj=number:121,string:liveLoopsColumn=number:0,string:valueMode=number:120}
+ASSIGN	154	{string:control=string:Pad 10,string:globalObj=number:121,string:liveLoopsColumn=number:1,string:valueMode=number:120}
+ASSIGN	155	{string:control=string:Pad 11,string:globalObj=number:121,string:liveLoopsColumn=number:2,string:valueMode=number:120}
+ASSIGN	156	{string:control=string:Pad 12,string:globalObj=number:121,string:liveLoopsColumn=number:3,string:valueMode=number:120}
+ASSIGN	157	{string:control=string:Pad 13,string:globalObj=number:121,string:liveLoopsColumn=number:4,string:valueMode=number:120}
+ASSIGN	158	{string:control=string:Pad 14,string:globalObj=number:121,string:liveLoopsColumn=number:5,string:valueMode=number:120}
+ASSIGN	159	{string:control=string:Pad 15,string:globalObj=number:121,string:liveLoopsColumn=number:6,string:valueMode=number:120}
+ASSIGN	160	{string:control=string:Pad 16,string:globalObj=number:121,string:liveLoopsColumn=number:7,string:valueMode=number:120}
+ASSIGN	161	{string:mode=string:Drum}
+ASSIGN	162	{string:mode=string:Pad Other}
+ASSIGN	163	{string:zone=string:Faders}
+ASSIGN	164	{string:control=string:Master Fader,string:master=number:0,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	165	{string:control=string:Fader 1,string:faderBankTrack=number:0,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	166	{string:control=string:Fader 2,string:faderBankTrack=number:1,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	167	{string:control=string:Fader 3,string:faderBankTrack=number:2,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	168	{string:control=string:Fader 4,string:faderBankTrack=number:3,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	169	{string:control=string:Fader 5,string:faderBankTrack=number:4,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	170	{string:control=string:Fader 6,string:faderBankTrack=number:5,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	171	{string:control=string:Fader 7,string:faderBankTrack=number:6,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	172	{string:control=string:Fader 8,string:faderBankTrack=number:7,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	173	{string:zone=string:Fader Pads}
+ASSIGN	174	{string:mode=string:Button Mode,Arm}
+ASSIGN	175	{string:control=string:Fader Pad 1,string:faderBankTrack=number:0,string:trackParam=number:101}
+ASSIGN	176	{string:control=string:Fader Pad 2,string:faderBankTrack=number:1,string:trackParam=number:101}
+ASSIGN	177	{string:control=string:Fader Pad 3,string:faderBankTrack=number:2,string:trackParam=number:101}
+ASSIGN	178	{string:control=string:Fader Pad 4,string:faderBankTrack=number:3,string:trackParam=number:101}
+ASSIGN	179	{string:control=string:Fader Pad 5,string:faderBankTrack=number:4,string:trackParam=number:101}
+ASSIGN	180	{string:control=string:Fader Pad 6,string:faderBankTrack=number:5,string:trackParam=number:101}
+ASSIGN	181	{string:control=string:Fader Pad 7,string:faderBankTrack=number:6,string:trackParam=number:101}
+ASSIGN	182	{string:control=string:Fader Pad 8,string:faderBankTrack=number:7,string:trackParam=number:101}
+ASSIGN	183	{string:control=string:Arm/Select,string:setMode=string:Button Mode,Select}
+ASSIGN	184	{string:mode=string:Button Mode,Select}
+ASSIGN	185	{string:control=string:Fader Pad 1,string:faderBankTrack=number:0,string:trackParam=number:104}
+ASSIGN	186	{string:control=string:Fader Pad 2,string:faderBankTrack=number:1,string:trackParam=number:104}
+ASSIGN	187	{string:control=string:Fader Pad 3,string:faderBankTrack=number:2,string:trackParam=number:104}
+ASSIGN	188	{string:control=string:Fader Pad 4,string:faderBankTrack=number:3,string:trackParam=number:104}
+ASSIGN	189	{string:control=string:Fader Pad 5,string:faderBankTrack=number:4,string:trackParam=number:104}
+ASSIGN	190	{string:control=string:Fader Pad 6,string:faderBankTrack=number:5,string:trackParam=number:104}
+ASSIGN	191	{string:control=string:Fader Pad 7,string:faderBankTrack=number:6,string:trackParam=number:104}
+ASSIGN	192	{string:control=string:Fader Pad 8,string:faderBankTrack=number:7,string:trackParam=number:104}
+ASSIGN	193	{string:control=string:Fader Pad 1,string:faderBankTrack=number:0,string:trackParam=number:113}
+ASSIGN	194	{string:control=string:Fader Pad 2,string:faderBankTrack=number:1,string:trackParam=number:113}
+ASSIGN	195	{string:control=string:Fader Pad 3,string:faderBankTrack=number:2,string:trackParam=number:113}
+ASSIGN	196	{string:control=string:Fader Pad 4,string:faderBankTrack=number:3,string:trackParam=number:113}
+ASSIGN	197	{string:control=string:Fader Pad 5,string:faderBankTrack=number:4,string:trackParam=number:113}
+ASSIGN	198	{string:control=string:Fader Pad 6,string:faderBankTrack=number:5,string:trackParam=number:113}
+ASSIGN	199	{string:control=string:Fader Pad 7,string:faderBankTrack=number:6,string:trackParam=number:113}
+ASSIGN	200	{string:control=string:Fader Pad 8,string:faderBankTrack=number:7,string:trackParam=number:113}
+ASSIGN	201	{string:control=string:Arm/Select,string:setMode=string:Button Mode,Arm}
+ASSIGN	202	{string:zone=string:Encoder}
+ASSIGN	203	{string:control=string:Plugin,string:paramName=string:Plugin 1,string:setMode=string:Smart Controls,1-8}
+ASSIGN	204	{string:control=string:Legacy Plugin,string:paramName=string:Plugin 1,string:setMode=string:Smart Controls,1-8}
+ASSIGN	205	{string:control=string:Encoder Plugin 1,string:setMode=string:Smart Controls,1-8}
+ASSIGN	206	{string:control=string:Encoder Plugin 2,string:setMode=string:Smart Controls,9-12}
+ASSIGN	207	{string:control=string:Mixer,string:paramName=string:Volume,string:setMode=string:Mixer,Volume}
+ASSIGN	208	{string:control=string:Legacy Mixer,string:paramName=string:Volume,string:setMode=string:Mixer,Volume}
+ASSIGN	209	{string:control=string:Encoder Mixer Volume,string:setMode=string:Mixer,Volume}
+ASSIGN	210	{string:control=string:Encoder Mixer Pan,string:setMode=string:Mixer,Pan}
+ASSIGN	211	{string:control=string:Encoder Mixer Eq,string:setMode=string:Mixer,EQ}
+ASSIGN	212	{string:control=string:Sends,string:paramName=string:Sends 1,string:setMode=string:Sends,Slot 1}
+ASSIGN	213	{string:control=string:Legacy Sends,string:paramName=string:Sends 1,string:setMode=string:Sends,Slot 1}
+ASSIGN	214	{string:control=string:Encoder Sends 1,string:setMode=string:Sends,Slot 1}
+ASSIGN	215	{string:control=string:Encoder Sends 2,string:setMode=string:Sends,Slot 2}
+ASSIGN	216	{string:control=string:Encoder Sends 3,string:setMode=string:Sends,Slot 3}
+ASSIGN	217	{string:control=string:Encoder Sends 4,string:setMode=string:Sends,Slot 4}
+ASSIGN	218	{string:control=string:Encoder Sends 5,string:setMode=string:Sends,Slot 5}
+ASSIGN	219	{string:control=string:Encoder Sends 6,string:setMode=string:Sends,Slot 6}
+ASSIGN	220	{string:control=string:Encoder Sends 7,string:setMode=string:Sends,Slot 7}
+ASSIGN	221	{string:control=string:Encoder Sends 8,string:setMode=string:Sends,Slot 8}
+ASSIGN	222	{string:control=string:Encoder Sends 9,string:setMode=string:Sends,Slot 9}
+ASSIGN	223	{string:control=string:Encoder Sends 10,string:setMode=string:Sends,Slot 10}
+ASSIGN	224	{string:control=string:Encoder Sends 11,string:setMode=string:Sends,Slot 11}
+ASSIGN	225	{string:control=string:Encoder Sends 12,string:setMode=string:Sends,Slot 12}
+ASSIGN	226	{string:control=string:Transport,string:paramName=string:Transport,string:setMode=string:Encoder Transport}
+ASSIGN	227	{string:control=string:Legacy Transport,string:paramName=string:Transport,string:setMode=string:Encoder Transport}
+ASSIGN	228	{string:control=string:Encoder Custom 1,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	229	{string:control=string:Legacy Encoder Custom 1,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	230	{string:control=string:Encoder Custom 2,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	231	{string:control=string:Legacy Encoder Custom 2,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	232	{string:control=string:Encoder Custom 3,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	233	{string:control=string:Legacy Encoder Custom 3,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	234	{string:control=string:Encoder Custom 4,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	235	{string:control=string:Legacy Encoder Custom 4,string:paramName=string:Encoder Other,string:setMode=string:Encoder Other}
+ASSIGN	236	{string:mode=string:Smart Controls,1-8}
+ASSIGN	237	{string:control=string:Encoder Page Down,string:setMode=string:Smart Controls,9-12}
+ASSIGN	238	{string:CSTrack=boolean:true,string:control=string:Encoder 1,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:123}
+ASSIGN	239	{string:CSTrack=boolean:true,string:control=string:Encoder 2,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:123}
+ASSIGN	240	{string:CSTrack=boolean:true,string:control=string:Encoder 3,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:123}
+ASSIGN	241	{string:CSTrack=boolean:true,string:control=string:Encoder 4,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:123}
+ASSIGN	242	{string:CSTrack=boolean:true,string:control=string:Encoder 5,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:123}
+ASSIGN	243	{string:CSTrack=boolean:true,string:control=string:Encoder 6,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:123}
+ASSIGN	244	{string:CSTrack=boolean:true,string:control=string:Encoder 7,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:123}
+ASSIGN	245	{string:CSTrack=boolean:true,string:control=string:Encoder 8,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:123}
+ASSIGN	246	{string:mode=string:Smart Controls,9-12}
+ASSIGN	247	{string:control=string:Encoder Page Up,string:setMode=string:Smart Controls,1-8}
+ASSIGN	248	{string:CSTrack=boolean:true,string:control=string:Encoder 1,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:123}
+ASSIGN	249	{string:CSTrack=boolean:true,string:control=string:Encoder 2,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:123}
+ASSIGN	250	{string:CSTrack=boolean:true,string:control=string:Encoder 3,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:123}
+ASSIGN	251	{string:CSTrack=boolean:true,string:control=string:Encoder 4,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:123}
+ASSIGN	252	{string:CSTrack=boolean:true,string:control=string:Encoder 5,string:paramName=string:@tp,@tn,string:paramOffset=number:12,string:trackParam=number:123}
+ASSIGN	253	{string:CSTrack=boolean:true,string:control=string:Encoder 6,string:paramName=string:@tp,@tn,string:paramOffset=number:13,string:trackParam=number:123}
+ASSIGN	254	{string:CSTrack=boolean:true,string:control=string:Encoder 7,string:paramName=string:@tp,@tn,string:paramOffset=number:14,string:trackParam=number:123}
+ASSIGN	255	{string:CSTrack=boolean:true,string:control=string:Encoder 8,string:paramName=string:@tp,@tn,string:paramOffset=number:15,string:trackParam=number:123}
+ASSIGN	256	{string:mode=string:Mixer,Volume}
+ASSIGN	257	{string:control=string:Encoder Page Down,string:setMode=string:Mixer,Pan}
+ASSIGN	258	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	259	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	260	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	261	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	262	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	263	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	264	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	265	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:Volume,@tn,string:trackParam=number:122}
+ASSIGN	266	{string:mode=string:Mixer,Pan}
+ASSIGN	267	{string:control=string:Encoder Page Up,string:setMode=string:Mixer,Volume}
+ASSIGN	268	{string:control=string:Encoder Page Down,string:setMode=string:Mixer,EQ}
+ASSIGN	269	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	270	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	271	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	272	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	273	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	274	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	275	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	276	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:fbType=number:125,string:paramName=string:Pan,@tn,string:trackParam=number:124}
+ASSIGN	277	{string:mode=string:Mixer,EQ}
+ASSIGN	278	{string:control=string:Encoder Page Up,string:setMode=string:Mixer,Pan}
+ASSIGN	279	{string:CSTrack=boolean:true,string:control=string:Encoder 1,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:126}
+ASSIGN	280	{string:CSTrack=boolean:true,string:control=string:Encoder 2,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:127}
+ASSIGN	281	{string:CSTrack=boolean:true,string:control=string:Encoder 3,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:126}
+ASSIGN	282	{string:CSTrack=boolean:true,string:control=string:Encoder 4,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:127}
+ASSIGN	283	{string:CSTrack=boolean:true,string:control=string:Encoder 5,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:126}
+ASSIGN	284	{string:CSTrack=boolean:true,string:control=string:Encoder 6,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:127}
+ASSIGN	285	{string:CSTrack=boolean:true,string:control=string:Encoder 7,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:126}
+ASSIGN	286	{string:CSTrack=boolean:true,string:control=string:Encoder 8,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:127}
+ASSIGN	287	{string:mode=string:Encoder Transport}
+ASSIGN	288	{string:control=string:Playhead Forward Step,string:keyCmd=number:2595}
+ASSIGN	289	{string:control=string:Playhead Rewind Step,string:keyCmd=number:2594}
+ASSIGN	290	{string:control=string:Encoder 1,string:globalObj=number:128,string:valueMode=number:109}
+ASSIGN	291	{string:clockPart=number:130,string:control=string:Probe Clock Bar,string:globalObj=number:129}
+ASSIGN	292	{string:clockPart=number:131,string:control=string:Probe Clock Beat,string:globalObj=number:129}
+ASSIGN	293	{string:clockPart=number:132,string:control=string:Probe Clock Format,string:globalObj=number:129}
+ASSIGN	294	{string:clockPart=number:131,string:control=string:Alt Scrub Beat,string:globalObj=number:133,string:valueMode=number:109}
+ASSIGN	295	{string:clockPart=number:132,string:control=string:Alt Scrub Format,string:globalObj=number:133,string:valueMode=number:109}
+ASSIGN	296	{string:control=string:Alt Shuttle,string:globalObj=number:134,string:valueMode=number:109}
+ASSIGN	297	{string:control=string:Alt Scrub Status,string:globalObj=number:135,string:valueMode=number:109}
+ASSIGN	298	{string:clockPart=number:132,string:control=string:Encoder 2,string:globalObj=number:133,string:localResolution=number:127,string:valueMode=number:109}
+ASSIGN	299	{string:control=string:Encoder 3,string:globalObj=number:136}
+ASSIGN	300	{string:clockPart=number:131,string:control=string:Encoder 4,string:globalObj=number:137}
+ASSIGN	301	{string:clockPart=number:131,string:control=string:Encoder 5,string:globalObj=number:138}
+ASSIGN	302	{string:control=string:Encoder 7,string:globalObj=number:135,string:valueMode=number:109}
+ASSIGN	303	{string:control=string:Encoder 8,string:globalObj=number:139,string:valueMode=number:111}
+ASSIGN	304	{string:control=string:Next Marker,string:keyCmd=string:next marker}
+ASSIGN	305	{string:control=string:Previous Marker,string:keyCmd=string:prev marker}
+ASSIGN	306	{string:mode=string:Encoder Other}
+ASSIGN	307	{string:mode=string:Sends,Slot 1}
+ASSIGN	308	{string:control=string:Encoder Page Down,string:paramName=string:Sends 2,string:setMode=string:Sends,Slot 2}
+ASSIGN	309	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	310	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	311	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	312	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	313	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	314	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	315	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	316	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:0,string:trackParam=number:140}
+ASSIGN	317	{string:mode=string:Sends,Slot 2}
+ASSIGN	318	{string:control=string:Encoder Page Up,string:paramName=string:Sends 1,string:setMode=string:Sends,Slot 1}
+ASSIGN	319	{string:control=string:Encoder Page Down,string:paramName=string:Sends 3,string:setMode=string:Sends,Slot 3}
+ASSIGN	320	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	321	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	322	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	323	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	324	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	325	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	326	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	327	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:1,string:trackParam=number:140}
+ASSIGN	328	{string:mode=string:Sends,Slot 3}
+ASSIGN	329	{string:control=string:Encoder Page Up,string:paramName=string:Sends 2,string:setMode=string:Sends,Slot 2}
+ASSIGN	330	{string:control=string:Encoder Page Down,string:paramName=string:Sends 4,string:setMode=string:Sends,Slot 4}
+ASSIGN	331	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	332	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	333	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	334	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	335	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	336	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	337	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	338	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:2,string:trackParam=number:140}
+ASSIGN	339	{string:mode=string:Sends,Slot 4}
+ASSIGN	340	{string:control=string:Encoder Page Up,string:paramName=string:Sends 3,string:setMode=string:Sends,Slot 3}
+ASSIGN	341	{string:control=string:Encoder Page Down,string:paramName=string:Sends 5,string:setMode=string:Sends,Slot 5}
+ASSIGN	342	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	343	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	344	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	345	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	346	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	347	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	348	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	349	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:3,string:trackParam=number:140}
+ASSIGN	350	{string:mode=string:Sends,Slot 5}
+ASSIGN	351	{string:control=string:Encoder Page Up,string:paramName=string:Sends 4,string:setMode=string:Sends,Slot 4}
+ASSIGN	352	{string:control=string:Encoder Page Down,string:paramName=string:Sends 6,string:setMode=string:Sends,Slot 6}
+ASSIGN	353	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	354	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	355	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	356	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	357	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	358	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	359	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	360	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:4,string:trackParam=number:140}
+ASSIGN	361	{string:mode=string:Sends,Slot 6}
+ASSIGN	362	{string:control=string:Encoder Page Up,string:paramName=string:Sends 5,string:setMode=string:Sends,Slot 5}
+ASSIGN	363	{string:control=string:Encoder Page Down,string:paramName=string:Sends 7,string:setMode=string:Sends,Slot 7}
+ASSIGN	364	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	365	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	366	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	367	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	368	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	369	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	370	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	371	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:5,string:trackParam=number:140}
+ASSIGN	372	{string:mode=string:Sends,Slot 7}
+ASSIGN	373	{string:control=string:Encoder Page Up,string:paramName=string:Sends 6,string:setMode=string:Sends,Slot 6}
+ASSIGN	374	{string:control=string:Encoder Page Down,string:paramName=string:Sends 8,string:setMode=string:Sends,Slot 8}
+ASSIGN	375	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	376	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	377	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	378	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	379	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	380	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	381	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	382	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:6,string:trackParam=number:140}
+ASSIGN	383	{string:mode=string:Sends,Slot 8}
+ASSIGN	384	{string:control=string:Encoder Page Up,string:paramName=string:Sends 7,string:setMode=string:Sends,Slot 7}
+ASSIGN	385	{string:control=string:Encoder Page Down,string:paramName=string:Sends 9,string:setMode=string:Sends,Slot 9}
+ASSIGN	386	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	387	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	388	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	389	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	390	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	391	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	392	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	393	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:7,string:trackParam=number:140}
+ASSIGN	394	{string:mode=string:Sends,Slot 9}
+ASSIGN	395	{string:control=string:Encoder Page Up,string:paramName=string:Sends 8,string:setMode=string:Sends,Slot 8}
+ASSIGN	396	{string:control=string:Encoder Page Down,string:paramName=string:Sends 10,string:setMode=string:Sends,Slot 10}
+ASSIGN	397	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	398	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	399	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	400	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	401	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	402	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	403	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	404	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:8,string:trackParam=number:140}
+ASSIGN	405	{string:mode=string:Sends,Slot 10}
+ASSIGN	406	{string:control=string:Encoder Page Up,string:paramName=string:Sends 9,string:setMode=string:Sends,Slot 9}
+ASSIGN	407	{string:control=string:Encoder Page Down,string:paramName=string:Sends 11,string:setMode=string:Sends,Slot 11}
+ASSIGN	408	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	409	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	410	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	411	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	412	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	413	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	414	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	415	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:9,string:trackParam=number:140}
+ASSIGN	416	{string:mode=string:Sends,Slot 11}
+ASSIGN	417	{string:control=string:Encoder Page Up,string:paramName=string:Sends 10,string:setMode=string:Sends,Slot 10}
+ASSIGN	418	{string:control=string:Encoder Page Down,string:paramName=string:Sends 12,string:setMode=string:Sends,Slot 12}
+ASSIGN	419	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	420	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	421	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	422	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	423	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	424	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	425	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	426	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:10,string:trackParam=number:140}
+ASSIGN	427	{string:mode=string:Sends,Slot 12}
+ASSIGN	428	{string:control=string:Encoder Page Up,string:paramName=string:Sends 11,string:setMode=string:Sends,Slot 11}
+ASSIGN	429	{string:control=string:Encoder 1,string:faderBankTrack=number:0,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	430	{string:control=string:Encoder 2,string:faderBankTrack=number:1,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	431	{string:control=string:Encoder 3,string:faderBankTrack=number:2,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	432	{string:control=string:Encoder 4,string:faderBankTrack=number:3,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	433	{string:control=string:Encoder 5,string:faderBankTrack=number:4,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	434	{string:control=string:Encoder 6,string:faderBankTrack=number:5,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	435	{string:control=string:Encoder 7,string:faderBankTrack=number:6,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+ASSIGN	436	{string:control=string:Encoder 8,string:faderBankTrack=number:7,string:paramName=string:@tp,@tn,string:paramOffset=number:11,string:trackParam=number:140}
+SCHEMA_END

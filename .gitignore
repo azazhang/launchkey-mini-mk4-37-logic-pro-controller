@@ -1,0 +1,25 @@
+# Keep private audio/project/preference/application backups local.
+*.logicx
+*.logicx/**
+*.app
+*.app/**
+*.app.backup
+*.app.backup/**
+*.plist
+com.apple.logic.pro.cs*
+*.wav
+*.aif
+*.aiff
+*.mp3
+*.caf
+*.flac
+*.m4a
+*.dmg
+*.pkg
+*.zip
+*.tar
+*.tar.gz
+*.DS_Store
+__pycache__/
+*.pyc
+LaunchkeyPositionBridge

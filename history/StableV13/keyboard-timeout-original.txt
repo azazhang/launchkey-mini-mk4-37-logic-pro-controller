@@ -1,0 +1,1 @@
+Original Launchkey temporary display timeout raw: 0x63 (99), read over CoreMIDI 2026-11-04.
