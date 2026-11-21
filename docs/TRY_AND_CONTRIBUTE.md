@@ -33,6 +33,21 @@ The experimental V24 script has SHA-256:
 
 See patches/launchkey-mini-mk4-37-v24.patch to review the changes. Applying the patch to exactly the source above was independently checked to produce V24 byte-for-byte. If you have a different vendor-script revision, review the patch and adapt only appropriate portions; do not force it onto an incompatible base.
 
+## Logic preferences and Controller Assignments
+
+**Required for the tested Encoder 1 step size:** set Logic's Nudge Value to **Beat** using the default **Control-Option-B** shortcut (or the corresponding Nudge Value key command). Encoder 1 invokes Logic's native Forward/Rewind by Nudge Value commands; its movement increments depend on this global Logic setting. On the development machine `NudgeIncrement` was `2`. Use the named Beat command to select the setting; do not directly edit the preference plist. See [Apple's Logic Pro global key commands](https://support.apple.com/guide/logicpro/global-commands-lgcp02bf31b6/mac).
+
+**Controller assignments:** the Lua script declares its own control mappings, including the Position step commands, clock feedback, encoder modes, and experimental scrub controls. Logic stores registrations in the per-user `~/Library/Preferences/com.apple.logic.pro.cs` binary database. That file is specific to the user's Logic installation and may contain other controllers; it must not be copied from this project's Mac mini. Clean installation and re-registration on an unrelated Mac have not yet been independently tested.
+
+**Do not add manual Scrub Forward/Rewind MIDI bindings.** During a November 10 experiment, Logic acquired two additional learned Key Command assignments:
+
+- Scrub Forward: `B0 72 7F` (CC 114)
+- Scrub Rewind: `B0 73 7F` (CC 115)
+
+They were removed from the test Mac on November 20 after discovering they were unrelated to V24's current Encoder 2 route. The rewind binding conflicts with the Launchkey Play button (`B0 73 7F`). If you previously created these exact mappings, remove *only those manual CC rows* in **Logic Pro > Key Commands > Edit Assignments**, select the relevant scrub command, then choose its CC 114 or CC 115 Control Surface row and click **Delete Assignment**. Keep the script-created `Native Scrub Forward Step` and `Native Scrub Rewind Step` rows (if present). A new user who has never created these manual bindings has nothing to remove.
+
+**Other recorded test-machine preferences:** `ScrubAudioInArrange = true`, `ScrubResponse = 4`, and `ScrubSpeed = 0`. They were already present in the November 7 diagnostic record and remain unchanged in the latest checks. Their necessity for the unresolved Encoder 2 audio-scrub implementation has *not* been established. Do not replace your Logic preferences or change those values merely to mirror the test machine; include your settings in an issue report if investigating audio scrubbing.
+
 ## Trial installation (advanced users)
 
 1. Save your Logic project and quit Logic.

@@ -12,6 +12,14 @@ The V22 script reused CC 0x6C/0x6D, which were already assigned in the Global Sh
 
 An earlier V19 implementation attempted direct audio scrubbing through AGL_SCRUB with AGL_SCRUBSTATUS. Its timer callback sent scrub-status release toward the hardware (outport DAW_IN), whereas activation was sent toward Logic (inport DAW_OUT). This explains why automatic release could be unreliable.
 
+## Independently learned Logic Key Command bindings (removed)
+
+The November 10 native-key-command experiment added two persistent manual Controller Surface Key Command assignments: `Scrub Forward` on MIDI `B0 72 7F` (CC 114), and `Scrub Rewind` on `B0 73 7F` (CC 115). The latter overlaps the Launchkey's physical Play-button MIDI message. These were additional to the Lua script's named, automatically registered controls. Both manually learned assignments were deleted through Logic's Key Command Assignments interface on November 20; the script-generated `Native Scrub Forward Step` / `Native Scrub Rewind Step` rows remain. The saved controller-assignment database was verified to contain neither obsolete input.
+
+This was a real Play-button mapping collision; it cannot by itself explain the earlier observed Play transition during Encoder 2 rotation, because the passive hardware capture contained no Play-button message at that moment. Keep those causal questions separate.
+
+Encoder 1's native nudge commands depend on the global Logic Nudge Value. For the tested beat-based movement, select Beat (Control-Option-B); this is a setting external to `config.lua`.
+
 ## Current known state
 
 V24 removes native key-command bursts, routes each Encoder 2 detent through AGL_SCRUB, and explicitly releases audio-scrub status when Encoder 1, Shift, Play or Stop is used. It also moves the dormant conflicting command controls to different CC numbers. V24 still has direction asymmetry: backward nearly correct, forward incorrect. Its scrub mode does not automatically exit solely when rotation stops.

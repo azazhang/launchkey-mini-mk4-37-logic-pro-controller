@@ -27,6 +27,12 @@ Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini
 
 If you want just the reliable improvements in a different vendor-script revision, review and adapt the patch sections relevant to Position, startup Transport mode, and the Transport display. Do not blindly transplant the V24 scrub section.
 
+## Important Logic configuration
+
+**Encoder 1 depends on Logic's Nudge Value.** Its Lua mapping invokes the native Forward/Rewind by Nudge Value commands (IDs 2595/2594). Set **Nudge Value to Beat** (default shortcut **Control-Option-B**) for the one-beat navigation behavior tested here. The Lua script does not change that preference.
+
+Logic persists controller mappings separately in `com.apple.logic.pro.cs`. V24 registers its named assignments via the Lua controller script; the community installation does not require copying another person's binary assignments file or manually learning scrub commands. In particular, **never manually map Scrub Rewind to MIDI `B0 73 7F`**: that is the Launchkey's Play-button message. Such an experimental assignment existed on the test Mac and was removed. See the [setup and cleanup details](docs/TRY_AND_CONTRIBUTE.md#logic-preferences-and-controller-assignments).
+
 ## Help solve Encoder 2 scrubbing
 
 A physical capture recorded 1,038 Encoder 2 messages. The hardware input uses relative MIDI BF 56: clockwise 41/42/44/48, counterclockwise 3F/3E/3C/38. Earlier V22 native Scrub Forward/Rewind key-command bursts sometimes started normal playback without a Play press. V24 uses AGL_SCRUB and AGL_SCRUBSTATUS; directional asymmetry remains unresolved.
