@@ -15,7 +15,7 @@ Community-facing, experimental modifications to the **Novation Launchkey Mini MK
 | Encoder 2: Scrub | **Unresolved**: counterclockwise nearly correct; clockwise incorrect; scrub state may remain active |
 | Other models / Logic versions | Untested compatibility; this particular Lua script is for the 37-key Mini |
 
-Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini MK4 37. On Logic Pro 13.0, Lua registration requires the Launchkey's **Auto** setting in Logic Pro > Settings > Control Surfaces > MIDI Controllers. V26 additionally makes Encoder Transport the first host assignment mode. On the test Mac, this mode was active immediately after re-registration, and a simulated Encoder 1 input moved the playhead and was reversed successfully. Physical control and audible Encoder 2 scrubbing still require hardware validation.
+Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini MK4 37. On Logic Pro 13.0, Lua registration requires the Launchkey's **Auto** setting in Logic Pro > Settings > Control Surfaces > MIDI Controllers. **Known regression:** V26 makes Encoder Transport active immediately after re-registration, but on the development Mac a full Logic 13 restart left physical Encoder 1 inactive and Encoders 2/3 changing track volumes. Pressing **Shift+Transport** restores the mode manually. The default hardware mode after a cold restart remains unresolved in the published V26 release; a separate experimental V27 candidate is being tested on the development Mac. Audible Encoder 2 scrubbing also remains unresolved.
 
 ## Start here
 
