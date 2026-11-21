@@ -15,7 +15,7 @@ Community-facing, experimental modifications to the **Novation Launchkey Mini MK
 | Encoder 2: Scrub | **Unresolved**: counterclockwise nearly correct; clockwise incorrect; scrub state may remain active |
 | Other models / Logic versions | Untested compatibility; this particular Lua script is for the 37-key Mini |
 
-Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini MK4 37. Logic Pro 13 compatibility has **not** been tested for this custom revision.
+Development setup: Logic Pro Creator Studio 12.3.1, macOS 27.2.1, Launchkey Mini MK4 37. On Logic Pro 13.0, the Lua assignments were observed to register after enabling the Launchkey's **Auto** setting in Logic Pro > Settings > Control Surfaces > MIDI Controllers; controller behavior and audible scrubbing on Logic 13 remain unverified.
 
 ## Start here
 

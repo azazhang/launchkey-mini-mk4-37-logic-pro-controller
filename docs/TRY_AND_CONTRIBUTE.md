@@ -2,7 +2,7 @@
 
 ## Intended hardware and software
 
-The script is specifically for the **Launchkey Mini MK4 37-key** (not the full-size Launchkey MK4 37 or the Mini MK4 25). It assumes Novation's official Logic controller script is installed. Our physical tests used Logic Pro Creator Studio 12.3.1; Logic 13 and other models/versions have not been tested.
+The script is specifically for the **Launchkey Mini MK4 37-key** (not the full-size Launchkey MK4 37 or the Mini MK4 25). It assumes Novation's official Logic controller script is installed. Our physical tests used Logic Pro Creator Studio 12.3.1. On Logic Pro 13.0, Lua registration was recovered by enabling the controller's Auto setting; physical control and audio behavior on Logic 13 is not yet verified.
 
 **Important limitation:** Encoder 2 audible scrubbing is broken. The latest trial found direction-dependent movement (counterclockwise was close to the intended behavior, clockwise was abnormal), and releasing the encoder does not always exit scrub mode. Use an expendable test session and avoid V24 if you need dependable audible scrubbing.
 
@@ -32,6 +32,14 @@ The experimental V24 script has SHA-256:
     30fc11285d7053d0dcc3500ce7b23fa306cf9f00025b8c129e072d32cd8a6c3d
 
 See patches/launchkey-mini-mk4-37-v24.patch to review the changes. Applying the patch to exactly the source above was independently checked to produce V24 byte-for-byte. If you have a different vendor-script revision, review the patch and adapt only appropriate portions; do not force it onto an incompatible base.
+
+## Logic Pro 13: controller script is installed but controls do not work
+
+After upgrading from Logic 12.3.1 to 13.0 on the development Mac, the custom Lua file and hardware MIDI endpoints remained intact, but Logic's controller database was missing the script-created mappings. The Launchkey Mini MK4 37 was listed in **Logic Pro > Settings > Control Surfaces > MIDI Controllers**, with its **Auto** checkbox turned **off**.
+
+**Fix:** with the Launchkey connected, enable **Auto** for the Launchkey Mini MK4 37 row (and leave unrelated controller rows unchanged). Logic immediately repopulated the script-created entries, including Encoder 1 and the clock-feedback controls; the installed V24 Lua source was unchanged.
+
+The test confirms the registration mechanism in Logic 13.0. It does not establish that all controller functions or audible Encoder 2 scrubbing work correctly in Logic 13.0. Simply placing the script in the system MIDI Device Scripts folder or using Control Surface Setup > New > Install may not restore mappings while Auto is off.
 
 ## Logic preferences and Controller Assignments
 
