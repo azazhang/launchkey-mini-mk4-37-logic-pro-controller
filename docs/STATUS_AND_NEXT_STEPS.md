@@ -36,9 +36,9 @@ V27 reasserts hardware Transport during initial host feedback and suppresses/rep
 
 ## November 21, 2026: Logic 13 port-registration error
 
-V27 passed one user-observed Logic restart but failed a subsequent restart: the Transport pad remained lit while Knobs 1-3 behaved as Mixer controls. The Logic Controller Assignments window had Mixer,Volume **active** (bullet) even though the Encoder Transport editor row was selected.
+V27 passed one user-observed Logic-only restart but failed after a subsequent full macOS reboot (as clarified by the user): the Transport pad remained lit while Knobs 1-3 behaved as Mixer controls. The Logic Controller Assignments window had Mixer,Volume **active** (bullet) even though the Encoder Transport editor row was selected.
 
-The Launchkey's Control Surface Setup had Input Port = MIDI Out and Output Port = MIDI In. Novation's official Mini MK4 Logic instructions require **Input Port = DAW Out** and **Output Port = DAW In**. Correcting the pair succeeded and persisted after closing/reopening Setup. Critically, toggling the device Auto assignment off/on reset both ports to the incorrect performance MIDI pair. We re-applied the DAW pair after the Auto registration refresh and confirmed the host Encoder Transport mode active. A fresh Logic quit/relaunch has not yet validated the repair.
+The Launchkey's Control Surface Setup had Input Port = MIDI Out and Output Port = MIDI In. Novation's official Mini MK4 Logic instructions require **Input Port = DAW Out** and **Output Port = DAW In**. Correcting the pair succeeded and persisted after closing/reopening Setup. Critically, toggling the device Auto assignment off/on reset both ports to the incorrect performance MIDI pair. We re-applied the DAW pair after the Auto registration refresh and confirmed the host Encoder Transport mode active. The user subsequently confirmed a successful Logic-only restart with the corrected port configuration. A full macOS reboot is the outstanding persistence test.
 
 An isolated V28 experiment attempted to force the host mode from the first encoder MIDI message. A CoreMIDI test injection left Logic in Mixer,Volume, so V28 was not validated or released. The loopback route may bypass the Lua processing used by physical hardware. V28 was rolled back to V27, and no custom background service was installed.
 
