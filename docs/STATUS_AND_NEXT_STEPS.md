@@ -34,6 +34,16 @@ The hardware mode is a distinct state: Novation documents that entering DAW mode
 
 V27 reasserts hardware Transport during initial host feedback and suppresses/repairs stray absolute encoder CCs while Lua is in Transport. It loaded and re-registered successfully, and **the user confirmed correct default knob behavior after a full Logic 13 restart on November 21**. This establishes a single successful real-device restart; repeatability remains unverified and the specific recovery path responsible has not been isolated. Its earlier synthetic nudge trial produced asymmetric movement, which was not attributed to the candidate; the project's original playhead position was subsequently restored through Logic's accessibility controls. V26 and V24 are preserved for rollback.
 
+## November 21, 2026: Logic 13 port-registration error
+
+V27 passed one user-observed Logic restart but failed a subsequent restart: the Transport pad remained lit while Knobs 1-3 behaved as Mixer controls. The Logic Controller Assignments window had Mixer,Volume **active** (bullet) even though the Encoder Transport editor row was selected.
+
+The Launchkey's Control Surface Setup had Input Port = MIDI Out and Output Port = MIDI In. Novation's official Mini MK4 Logic instructions require **Input Port = DAW Out** and **Output Port = DAW In**. Correcting the pair succeeded and persisted after closing/reopening Setup. Critically, toggling the device Auto assignment off/on reset both ports to the incorrect performance MIDI pair. We re-applied the DAW pair after the Auto registration refresh and confirmed the host Encoder Transport mode active. A fresh Logic quit/relaunch has not yet validated the repair.
+
+An isolated V28 experiment attempted to force the host mode from the first encoder MIDI message. A CoreMIDI test injection left Logic in Mixer,Volume, so V28 was not validated or released. The loopback route may bypass the Lua processing used by physical hardware. V28 was rolled back to V27, and no custom background service was installed.
+
+Do not claim port correction fixes the restart issue until a real fresh launch passes. Keep Encoder 2 audible scrubbing separate.
+
 ## Next avenues — assess separately on Logic 13
 
 1. Test the native AGL_SCRUB and AGL_SCRUBSTATUS modes directly, including host value semantics, two's-complement negative scaling, ACP_BEAT versus ACP_FORMAT, and audio audition in each direction.
