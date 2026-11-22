@@ -38,11 +38,17 @@ V27 reasserts hardware Transport during initial host feedback and suppresses/rep
 
 V27 passed one user-observed Logic-only restart but failed after a subsequent full macOS reboot (as clarified by the user): the Transport pad remained lit while Knobs 1-3 behaved as Mixer controls. The Logic Controller Assignments window had Mixer,Volume **active** (bullet) even though the Encoder Transport editor row was selected.
 
-The Launchkey's Control Surface Setup had Input Port = MIDI Out and Output Port = MIDI In. Novation's official Mini MK4 Logic instructions require **Input Port = DAW Out** and **Output Port = DAW In**. Correcting the pair succeeded and persisted after closing/reopening Setup. Critically, toggling the device Auto assignment off/on reset both ports to the incorrect performance MIDI pair. We re-applied the DAW pair after the Auto registration refresh and confirmed the host Encoder Transport mode active. The user subsequently confirmed a successful Logic-only restart with the corrected port configuration. A full macOS reboot is the outstanding persistence test.
+The Launchkey's Control Surface Setup had Input Port = MIDI Out and Output Port = MIDI In. Novation's official Mini MK4 Logic instructions require **Input Port = DAW Out** and **Output Port = DAW In**. Correcting the pair succeeded and persisted after closing/reopening Setup. Critically, toggling the device Auto assignment off/on reset both ports to the incorrect performance MIDI pair. We re-applied the DAW pair after the Auto registration refresh and confirmed the host Encoder Transport mode active. The user confirmed a successful Logic-only restart and a full macOS reboot (boot time November 21, 20:42:49 EST) with V27 after the port correction. This shows one successful reboot, while the port mismatch's role in the earlier failure is unproven.
 
 An isolated V28 experiment attempted to force the host mode from the first encoder MIDI message. A CoreMIDI test injection left Logic in Mixer,Volume, so V28 was not validated or released. The loopback route may bypass the Lua processing used by physical hardware. V28 was rolled back to V27, and no custom background service was installed.
 
 Do not claim port correction fixes the restart issue until a real fresh launch passes. Keep Encoder 2 audible scrubbing separate.
+
+## Why volume still moved when Control Surface Setup had the wrong ports
+
+The observed Mixer,Volume response does not establish that the physical encoders transmitted through the ordinary performance MIDI port. V27 declares inport=DAW_OUT and outport=DAW_IN on its encoder controls. Novation's Programmer's Reference specifies that DAW encoder reports use the DAW USB interface. Critically, in a controlled test BEFORE correcting the port fields in Control Surface Setup, injecting B6 1E 05 into CoreMIDI's DAW Out endpoint changed Logic's active assignment mode from Mixer,Volume to Encoder Transport. Therefore Logic reacted to DAW-port input while the Setup popups showed ordinary MIDI Out/In. The exact relationship between the Setup input popup and the Lua per-control port declarations remains to be characterized.
+
+The volume behavior corresponds to Mixer,Volume having the active mode bullet in Logic's Controller Assignments inspector, despite the lit Transport pad. The incorrect Setup ports may have disrupted startup synchronization, but this was not established. No physical dual-port capture was obtained during the failure, and we cannot attribute the failure conclusively to the popup configuration. After correcting the ports, a Logic-only restart and subsequently a full macOS reboot passed; correlation alone does not identify the internal routing mechanism.
 
 ## Next avenues — assess separately on Logic 13
 
